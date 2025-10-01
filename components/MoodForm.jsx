@@ -1,17 +1,34 @@
 import { useState } from "react";
+import { useNavigate } from "react-router";
 // need to import mood service
 // import props
 
 const moodForm = () => {
+  const navigate = useNavigate();
+
+   const formatDate = (date) => {
+   return date.toISOString().split("T")[0];
+  }
+
   const [moodData, setMoodData] = useState({
     emotion: "",
-    physical: [],
-    intensity: 1,
-    timeOfEmotion: new Date(),
+    physical: "",
+    intensity: 5,
+    timeOfEmotion: formatDate(new Date()),
     comments: { note: "" },
   });
 
+
+
   // handleSubmit function
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const moodRequest = await newMood(moodData);
+
+    setMood([...moods, moodRequest]);
+    setMoodData({});
+    navigate("/");
+  };
 
   return (
     <>
@@ -19,11 +36,13 @@ const moodForm = () => {
 
       <form onSubmit={handleSubmit}>
 
-          {/* emotion input */}
+        {/* emotion input */}
         <label>Mood: </label>
         <select
-            value={moodData.emotion}
-            onChange={(event) => setMoodData({...moodData, emotion: event.target.value})}
+          value={moodData.emotion}
+          onChange={(event) =>
+            setMoodData({ ...moodData, emotion: event.target.value })
+          }
         >
           <option value="">-choose mood-</option>
           <option value="angry">Angry</option>
@@ -35,35 +54,58 @@ const moodForm = () => {
           <option value="surprised">Surprised</option>
         </select>
 
-        {/* physical emotional experience input - need to confer with group*/}
+        {/* physical emotional experience input */}
         <label>Physical experience of mood: </label>
+        <textarea
+          value={moodData.physical}
+          onChange={(event) =>
+            setMoodData({ ...moodData, physical: event.target.value })
+          }
+          placeholder="where do you feel this mood in your body?"
+        />
 
-      {/* intensity input */}
-      <label>On a scale of 1 to 10, the intensity of the mood: </label>
-      <input 
-         type="number"
-         min="1"
-         max="10"
-         value={moodData.intensity}
-         onChange={(event) => setMoodData({...moodData, intensity: parseInt(event.target.value)})}
-      />
+        {/* intensity input */}
+        <label>On a scale of 1 to 10, the intensity of the mood: </label>
+        <select
+          value={moodData.intensity}
+          onChange={(event) =>
+            setMoodData({
+              ...moodData,
+              intensity: parseInt(event.target.value),
+            })
+          }
+        >
 
-      {/* time of emotion input */}
-      <label>Day of Mood: </label>
-      <input 
-         type="date"
-         value={moodData.timeOfEmotion}
-      />
+         <option value="">--</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+           <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
 
-      {/* notes input */}
-      <label>Note: </label>
-      <textarea 
-         value={moodData.comments.note}
-         onChange={(event) => setMoodData({...moodData.comments, note: event.target.value })}
-         placeholder="anything else?"
-      />
+        </select>
 
-      <button type="submit">Add Mood</button>
+        {/* time of emotion input */}
+        <label>Day of Mood: </label>
+        <input type="date" 
+        value={moodData.timeOfEmotion} />
+
+        {/* notes input */}
+        <label>Note: </label>
+        <textarea
+          value={moodData.comments.note}
+          onChange={(event) =>
+            setMoodData({ ...moodData.comments, note: event.target.value })
+          }
+          placeholder="anything else?"
+        />
+
+        <button type="submit">Add Mood</button>
       </form>
     </>
   );
