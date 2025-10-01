@@ -1,35 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from "react";
+import { Route, Routes } from "react-router";
+import MoodDetail from "./components/MoodDetail/MoodDetail.jsx";
+import MoodList from "./components/MoodList/MoodList.jsx";
+import MoodForm from "./components/MoodForm/MoodForm.jsx";
+import "./App.css";
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const [mood, setMoods] = useState([]);
+
+  useEffect(() => {
+    const getMoods = async () => {
+      const allMoods = await moodService.index();
+      setMoods(allMoods);
+    };
+    getMoods();
+  }, []);
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Routes>
+        <Route path="/" element={<MoodList moods={moods} />} />
+        <Route path="/moods/new" element={<MoodForm setMoods={setMoods} />} />
+        <Route
+          path="/moods/:moodId"
+          element={<MoodDetail setMoods={setMoods} />}
+        />
+      </Routes>
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
