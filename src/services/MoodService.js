@@ -20,6 +20,7 @@ const index = async (moodData) => {
 
 const show = async (moodId) => {
   try {
+    console.log(moodId);
     const res = await fetch(BASE_URL + `/${moodId}`, {
       method: "GET",
       body: JSON.stringify(moodId),

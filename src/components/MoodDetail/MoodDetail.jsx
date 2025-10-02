@@ -5,6 +5,7 @@ import * as moodService from "../../services/MoodService.js";
 function MoodDetail({moods, setMood}) {
   const params = useParams();
   const navigate = useNavigate();
+
   const [isEditing, setIsEditing] = useState(false);
   const [error, setError] = useState("");
 
@@ -20,20 +21,20 @@ function MoodDetail({moods, setMood}) {
    // handle submit function
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const editMood = await moodService.updateMood(mood);
+    const editMood = await moodService.updateMood(moods);
 
     if (!editMood) {
       setError("There was an error, try again");
     } else {
       setIsEditing(false);
-      navigate(`/moods/${mood._id}`);
+      navigate(`/moods/${moods._id}`);
     }
   };
 
   // handle delete function
   const handleDelete = async (event) => {
       event.preventDefault();
-      const deleteMood = await moodService.deleteMood(mood);
+      const deleteMood = await moodService.deleteMood(moods);
       if (!deleteMood) {
          setError("There was an error, please try again!")
       } else {
@@ -47,12 +48,14 @@ function MoodDetail({moods, setMood}) {
 
       {!isEditing ? (
         <div>
-          <h1>{mood.emotion}</h1>
+          <h1>{moods.emotion}</h1>
           <p>{error}</p>
 
-          <h2>Day of Mood: {mood.timeOfEmotion}</h2>
-          <h2>Physical Experience: {mood.physical}</h2>
-          <h2>Intensity of Mood: {mood.intensity}</h2>
+          <h2>Day of Mood: {moods.timeOfEmotion}</h2>
+          <h2>Physical Experience: {moods.physical}</h2>
+          <h2>Intensity of Mood: {moods.intensity}</h2>
+
+          {/* add notes */}
 
          <form onSubmit={handleDelete}>
             <button type="submit">Remove Mood</button>
@@ -65,9 +68,9 @@ function MoodDetail({moods, setMood}) {
           {/* emotion edit */}
           <label>Mood: </label>
           <select
-            value={mood.emotion}
+            value={moods.emotion}
             onChange={(event) =>
-              setMood({ ...mood, emotion: event.target.value })
+              setMood({ ...moods, emotion: event.target.value })
             }
           >
             <option value="">-choose mood-</option>
@@ -83,16 +86,16 @@ function MoodDetail({moods, setMood}) {
           {/* physical experience edit */}
           <label>Physical experience of mood: </label>
           <textarea
-            value={mood.physical}
+            value={moods.physical}
             onChange={(event) =>
-              setMood({ ...mood, physical: event.target.value })
+              setMood({ ...moods, physical: event.target.value })
             }
           />
 
           {/* intensity edit */}
           <label>On a scale of 1 to 10, select the intensity of the mood: </label>
           <select
-            value={mood.intensity}
+            value={moods.intensity}
             onChange={(event) =>
               setMood({
                 ...mood,
@@ -115,14 +118,14 @@ function MoodDetail({moods, setMood}) {
 
           {/* time of emotion edit */}
           <label>Day of Mood: </label>
-          <input type="date" value={mood.timeOfEmotion} />
+          <input type="date" value={moods.timeOfEmotion} />
 
           {/* notes edit */}
           <label>Note: </label>
           <textarea
-            value={mood.comments?.note || ""}
+            value={moods.comments?.note || ""}
             onChange={(event) =>
-              setMood({ ...mood.comments, note: event.target.value })
+              setMood({ ...moods.comments, note: event.target.value })
             }
           />
 

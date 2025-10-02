@@ -25,7 +25,7 @@ const App = () => {
 
   return (
     <>
-      <NavBar setMoods={setMoods} />
+      <NavBar />
       <Routes>
         <Route
           path="/"
@@ -40,7 +40,7 @@ const App = () => {
         <Route
           path="/moods/:moodId"
           element={<MoodDetail setMoods={setMoods} moods={moods} />}
-        />{" "}
+        />
       </Routes>
     </>
   );
