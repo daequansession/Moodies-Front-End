@@ -1,0 +1,36 @@
+.resources {
+  max-width: 100%; /* ensure it doesn't spill out */
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.resources h1 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.resources ul {
+  list-style: none; /* remove default bullets */
+  padding-left: 0;
+  margin: 0;
+  display: block; /* reset in case flexbox is applied */
+}
+
+.resources li {
+  display: block; /* force stack vertically */
+  margin-bottom: 0.5rem;
+}
+
+.helpline-name {
+  font-weight: bold;
+  margin: 0.5rem 0 0.25rem;
+}
+
+.resources a {
+  color: #0070f3; /* your theme color */
+  text-decoration: underline;
+}
+
+.resources a:hover {
+  color: #0056b3;
+}
