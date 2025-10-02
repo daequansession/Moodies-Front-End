@@ -4,7 +4,6 @@ const index = async (moodData) => {
   try {
     const res = await fetch(BASE_URL, {
       method: "GET",
-      body: JSON.stringify(moodData),
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -22,7 +21,6 @@ const show = async (moodId) => {
   try {
     const res = await fetch(BASE_URL + `/${moodId}`, {
       method: "GET",
-      body: JSON.stringify(moodId),
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("token")}`,
