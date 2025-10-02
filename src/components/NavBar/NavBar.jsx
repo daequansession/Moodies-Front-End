@@ -3,12 +3,13 @@ import { Link } from "react-router";
 import { UserContext } from "../../contexts/UserContext";
 import "./NavBar.css";
 
-const NavBar = () => {
+const NavBar = (setMoods) => {
   const { user, setUser } = useContext(UserContext);
 
   const handleSignOut = () => {
     localStorage.removeItem("token");
     setUser(null);
+    setMoods([]);
   };
 
   return (
