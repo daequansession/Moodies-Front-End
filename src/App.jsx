@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Route, Routes } from "react-router";
-
 import * as moodService from "./services/MoodService.js";
 import MoodDetail from "./components/MoodDetail/MoodDetail.jsx";
 import MoodList from "./components/MoodList/MoodList.jsx";
