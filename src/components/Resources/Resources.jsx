@@ -1,4 +1,4 @@
-const resources = () => {
+const Resources = () => {
 
    return (
       <>
@@ -58,11 +58,8 @@ const resources = () => {
           </li>
         </ul>
       </ul>
-      
-      
       </>
    )
-
 }
 
-export default resources;
+export default Resources;
