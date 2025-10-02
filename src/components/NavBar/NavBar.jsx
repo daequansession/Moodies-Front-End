@@ -17,13 +17,14 @@ const NavBar = () => {
 
   const handleClick = () => {
     console.log("I was clicked");
+    setShowResource((prev) => !prev);
   };
 
   return (
     <nav>
       {user ? (
         <>
-          <h4>Logged in as {user.username}</h4>
+          <h4>{user.username}</h4>
           <ul>
             <li>
               <Link to="/">Home</Link>
@@ -45,10 +46,11 @@ const NavBar = () => {
           </li>
         </ul>
       )}
-      {/* We want to have a clickable word that toggles a larger menu */}
       <ul>
         <li onClick={handleClick}>Resources</li>
       </ul>
+
+      <div className="resource-container">{showResource && <Resources />}</div>
     </nav>
   );
 };
