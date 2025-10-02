@@ -1,9 +1,12 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router";
 import { UserContext } from "../../contexts/UserContext";
+import Resources from "../Resources/Resources.jsx";
 import "./NavBar.css";
 
-const NavBar = (setMoods) => {
+const NavBar = () => {
+  const [showResource, setShowResource] = useState(false);
+
   const { user, setUser } = useContext(UserContext);
 
   const handleSignOut = () => {
@@ -12,14 +15,19 @@ const NavBar = (setMoods) => {
     setMoods([]);
   };
 
+  const handleClick = () => {
+    console.log("I was clicked");
+    setShowResource((prev) => !prev);
+  };
+
   return (
     <nav>
       {user ? (
         <>
-          <h4>Logged in as {user.username}</h4>
+          <h4>{user.username}</h4>
           <ul>
             <li>
-              <Link to="/">Dashboard</Link>
+              <Link to="/">Home</Link>
             </li>
             <li>
               <Link to="/" onClick={handleSignOut}>
@@ -38,6 +46,11 @@ const NavBar = (setMoods) => {
           </li>
         </ul>
       )}
+      <ul>
+        <li onClick={handleClick}>Resources</li>
+      </ul>
+
+      <div className="resource-container">{showResource && <Resources />}</div>
     </nav>
   );
 };
