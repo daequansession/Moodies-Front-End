@@ -1,14 +1,15 @@
 import { useState, useEffect, useContext } from "react";
 import { Route, Routes } from "react-router";
 import * as moodService from "./services/MoodService.js";
-import MoodDetail from "./components/MoodDetail/MoodDetail.jsx";
+import GuestLanding from "./components/GuestLanding/GuestLanding.jsx"
 import MoodList from "./components/MoodList/MoodList.jsx";
+import MoodDetail from "./components/MoodDetail/MoodDetail.jsx";
 import MoodForm from "./components/MoodForm/MoodForm.jsx";
 import NavBar from "./components/NavBar/NavBar.jsx";
-import { UserContext } from "/src/contexts/UserContext.jsx";
+import { UserContext } from "/contexts/UserContext.jsx";
 import SignUpForm from "./components/SignUpForm/SignUpForm.jsx";
 import SignInForm from "./components/SignInForm/SignInForm.jsx";
-import "./src/App.css";
+import "./App.css";
 
 const App = () => {
   const [moods, setMoods] = useState([]);
@@ -28,7 +29,7 @@ const App = () => {
       <Routes>
         <Route
           path="/"
-          element={user ? <MoodList moods={moods} /> : <Landing />}
+          element={user ? <MoodList moods={moods} /> : <GuestLanding />}
         />
         <Route path="/sign-up" element={<SignUpForm />} />
         <Route path="/sign-in" element={<SignInForm />} />

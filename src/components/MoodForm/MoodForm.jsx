@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 
+import { newMood } from "../../services/MoodService.js"
 import "./MoodForm.css";
 
 // need to import mood service
 // import props
 
-const moodForm = () => {
+const moodForm = ({moods, setMoods}) => {
   const navigate = useNavigate();
 
   const formatDate = (date) => {
@@ -26,7 +27,12 @@ const moodForm = () => {
     event.preventDefault();
     const moodRequest = await newMood(moodData);
 
-    setMood([...moods, moodRequest]);
+    console.log("Moods", moods);
+    console.log("moodRequest", moodRequest);
+    if (moods)
+      setMoods([...moods, moodRequest]);
+    else
+      setMoods([moodRequest]);
     setMoodData({});
     navigate("/");
   };
@@ -90,7 +96,13 @@ const moodForm = () => {
 
         {/* time of emotion input */}
         <label>Day of Mood: </label>
-        <input type="date" value={moodData.timeOfEmotion} />
+        <input
+          type="date"
+          value={moodData.timeOfEmotion} 
+          onChange={(event) => {
+            setMoodData({...moodData, timeOfEmotion: event.target.value})}
+          }
+        />
 
         {/* notes input */}
         <label>Note: </label>
