@@ -1,14 +1,19 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Route, Routes } from "react-router";
 import * as moodService from "./services/MoodService.js";
 import MoodDetail from "./components/MoodDetail/MoodDetail.jsx";
 import MoodList from "./components/MoodList/MoodList.jsx";
 import MoodForm from "./components/MoodForm/MoodForm.jsx";
-import "./App.css";
-
+import NavBar from "./components/NavBar/NavBar.jsx";
+import { UserContext } from "./src/contexts/UserContext.jsx";
+import SignUpForm from "./components/SignUpForm/SignUpForm.jsx";
+import SignInForm from "./components/SignInForm/SignInForm.jsx";
+import "./src/App.jsx";
+import "./src/App.css";
 
 const App = () => {
   const [moods, setMoods] = useState([]);
+  const { user } = useContext(UserContext);
 
   useEffect(() => {
     const getMoods = async () => {
@@ -20,13 +25,22 @@ const App = () => {
 
   return (
     <>
+      <NavBar />
       <Routes>
-        <Route path="/" element={<MoodList moods={moods} />} />
-        <Route path="/moods/new" element={<MoodForm setMoods={setMoods} moods={moods}/>} />
+        <Route
+          path="/"
+          element={user ? <MoodList moods={moods} /> : <Landing />}
+        />
+        <Route path="/sign-up" element={<SignUpForm />} />
+        <Route path="/sign-in" element={<SignInForm />} />
+        <Route
+          path="/moods/new"
+          element={<MoodForm setMoods={setMoods} moods={moods} />}
+        />
         <Route
           path="/moods/:moodId"
-          element={<MoodDetail setMoods={setMoods} moods={moods}/>}
-        />
+          element={<MoodDetail setMoods={setMoods} moods={moods} />}
+        />{" "}
       </Routes>
     </>
   );

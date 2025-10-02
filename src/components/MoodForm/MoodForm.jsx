@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 
-import "./MoodForm.css"
+import "./MoodForm.css";
 
 // need to import mood service
 // import props
@@ -9,9 +9,9 @@ import "./MoodForm.css"
 const moodForm = () => {
   const navigate = useNavigate();
 
-   const formatDate = (date) => {
-   return date.toISOString().split("T")[0];
-  }
+  const formatDate = (date) => {
+    return date.toISOString().split("T")[0];
+  };
 
   const [moodData, setMoodData] = useState({
     emotion: "",
@@ -20,8 +20,6 @@ const moodForm = () => {
     timeOfEmotion: formatDate(new Date()),
     comments: { note: "" },
   });
-
-
 
   // handleSubmit function
   const handleSubmit = async (event) => {
@@ -38,7 +36,6 @@ const moodForm = () => {
       <h1>Log New Mood</h1>
 
       <form onSubmit={handleSubmit}>
-
         {/* emotion input */}
         <label>Mood: </label>
         <select
@@ -78,8 +75,7 @@ const moodForm = () => {
             })
           }
         >
-
-         <option value="">--</option>
+          <option value="">--</option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -87,16 +83,14 @@ const moodForm = () => {
           <option value="5">5</option>
           <option value="6">6</option>
           <option value="7">7</option>
-           <option value="8">8</option>
+          <option value="8">8</option>
           <option value="9">9</option>
           <option value="10">10</option>
-
         </select>
 
         {/* time of emotion input */}
         <label>Day of Mood: </label>
-        <input type="date" 
-        value={moodData.timeOfEmotion} />
+        <input type="date" value={moodData.timeOfEmotion} />
 
         {/* notes input */}
         <label>Note: </label>
