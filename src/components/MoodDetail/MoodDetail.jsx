@@ -2,11 +2,10 @@ import { useParams, useNavigate } from "react-router";
 import { useEffect, useState } from "react";
 import * as moodService from "../../services/MoodService.js";
 
-
-   // format date to show only day, not time
-    const formatDate = (date) => {
-    return date.toISOString().split("T")[0];
-  };
+// format date to show only day, not time
+const formatDate = (date) => {
+  return date.toISOString().split("T")[0];
+};
 
 function MoodDetail() {
   const params = useParams();
@@ -30,8 +29,7 @@ function MoodDetail() {
     getMood();
   }, []);
 
-
-   // handle submit function
+  // handle submit function
   const handleSubmit = async (event) => {
     event.preventDefault();
     const editMood = await moodService.updateMood(mood);
@@ -46,36 +44,53 @@ function MoodDetail() {
 
   // handle delete function
   const handleDelete = async (event) => {
-      event.preventDefault();
-      const deleteMood = await moodService.deleteMood(mood._id);
-      if (!deleteMood) {
-         setError("There was an error, please try again!")
-      } else {
-         setIsEditing(false);
-         navigate("/")
-      }
-  }
+    event.preventDefault();
+    const deleteMood = await moodService.deleteMood(mood._id);
+    if (!deleteMood) {
+      setError("There was an error, please try again!");
+    } else {
+      setIsEditing(false);
+      navigate("/");
+    }
+  };
+
+  const moodIsLoaded = () => {
+    return (
+      mood &&
+      mood.emotion &&
+      mood.comments &&
+      mood.intensity &&
+      mood.physical &&
+      mood.timeOfEmotion
+    );
+  };
 
   return (
     <>
-
       {!isEditing ? (
-        <div>
-          <h1>{mood.emotion}</h1>
-          <p>{error}</p>
+        moodIsLoaded() ? (
+          <div>
+            <h1>{mood.emotion}</h1>
+            <p>{error}</p>
 
-          <h2>Day of Mood: {mood.timeOfEmotion ? formatDate(new Date(mood.timeOfEmotion)) : ""}</h2>
-          <h2>Physical Experience: {mood.physical}</h2>
-          <h2>Intensity of Mood: {mood.intensity}</h2>
+            <h2>
+              Day of Mood:{" "}
+              {mood.timeOfEmotion
+                ? formatDate(new Date(mood.timeOfEmotion))
+                : ""}
+            </h2>
+            <h2>Physical Experience: {mood.physical}</h2>
+            <h2>Intensity of Mood: {mood.intensity}</h2>
 
-         <form onSubmit={handleDelete}>
-            <button type="submit">Remove Mood</button>
-         </form>
-
-        </div>
+            <form onSubmit={handleDelete}>
+              <button type="submit">Remove Mood</button>
+            </form>
+          </div>
+        ) : (
+          <h3>Loading...</h3>
+        )
       ) : (
         <form onSubmit={handleSubmit}>
-
           {/* emotion edit */}
           <label>Mood: </label>
           <select
@@ -104,7 +119,9 @@ function MoodDetail() {
           />
 
           {/* intensity edit */}
-          <label>On a scale of 1 to 10, select the intensity of the mood: </label>
+          <label>
+            On a scale of 1 to 10, select the intensity of the mood:{" "}
+          </label>
           <select
             value={mood.intensity}
             onChange={(event) =>
@@ -129,10 +146,14 @@ function MoodDetail() {
 
           {/* time of emotion edit */}
           <label>Day of Mood: </label>
-          <input 
-            type="date" 
-            value={mood.timeOfEmotion ? formatDate(new Date(mood.timeOfEmotion)) : ""} 
-            onChange={(event) => {setMood({...mood, timeOfEmotion: new Date(event.target.value)})}}
+          <input
+            type="date"
+            value={
+              mood.timeOfEmotion ? formatDate(new Date(mood.timeOfEmotion)) : ""
+            }
+            onChange={(event) => {
+              setMood({ ...mood, timeOfEmotion: new Date(event.target.value) });
+            }}
             max={formatDate(new Date())}
           />
 
@@ -141,26 +162,23 @@ function MoodDetail() {
           <textarea
             value={mood.comments?.note ?? ""}
             onChange={(event) =>
-              setMood({ 
+              setMood({
                 ...mood,
-                comments:
-                {
+                comments: {
                   ...mood.comments,
                   note: event.target.value,
-                }
+                },
               })
             }
           />
 
           <button type="submit">Update Mood</button>
         </form>
-
       )}
 
-       <button onClick={() => setIsEditing(!isEditing)}>
+      <button onClick={() => setIsEditing(!isEditing)}>
         {!isEditing ? "Update Mood" : "Cancel Edit"}
       </button>
-
     </>
   );
 }
