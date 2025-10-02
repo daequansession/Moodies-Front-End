@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 
-import { newMood } from "../../services/MoodService.js"
 import "./MoodForm.css"
 
+// need to import mood service
+// import props
 
-const moodForm = ({moods, setMoods}) => {
+const moodForm = () => {
   const navigate = useNavigate();
 
    const formatDate = (date) => {
@@ -27,8 +28,8 @@ const moodForm = ({moods, setMoods}) => {
     event.preventDefault();
     const moodRequest = await newMood(moodData);
 
-    setMoods([...moods, moodRequest]);
-    setMood({});
+    setMood([...moods, moodRequest]);
+    setMoodData({});
     navigate("/");
   };
 
