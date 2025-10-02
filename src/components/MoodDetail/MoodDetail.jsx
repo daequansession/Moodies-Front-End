@@ -56,7 +56,7 @@ function MoodDetail({moods, setMood}) {
           <h1>{moods.emotion}</h1>
           <p>{error}</p>
 
-          <h2>Day of Mood: {moods.timeOfEmotion}</h2>
+          <h2>Day of Mood: {moods.timeOfEmotion ? formatDate(new Date(moods.timeOfEmotion)) : ""}</h2>
           <h2>Physical Experience: {moods.physical}</h2>
           <h2>Intensity of Mood: {moods.intensity}</h2>
 
@@ -123,17 +123,24 @@ function MoodDetail({moods, setMood}) {
           <label>Day of Mood: </label>
           <input 
             type="date" 
-            value={moods.timeOfEmotion} 
-            onChange={(event) => {setMoodData({...moodData, timeOfEmotion: event.target.value})}}
+            value={moods.timeOfEmotion ? formatDate(new Date(moods.timeOfEmotion)) : ""} 
+            onChange={(event) => {setMood({...moods, timeOfEmotion: event.target.value})}}
             max={formatDate(new Date())}
           />
 
           {/* notes edit */}
           <label>Note: </label>
           <textarea
-            value={moods.comments?.note || ""}
+            value={moods.comments?.note ?? ""}
             onChange={(event) =>
-              setMood({ ...moods.comments, note: event.target.value })
+              setMood({ 
+                ...moods,
+                comments:
+                {
+                  ...moods.comments,
+                  note: event.target.value,
+                }
+              })
             }
           />
 
