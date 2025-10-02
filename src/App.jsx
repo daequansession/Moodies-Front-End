@@ -27,7 +27,12 @@ const App = () => {
     <>
       <NavBar />
       <Routes>
-        <Route path="/" element={<MoodList moods={moods} />} />
+        <Route
+          path="/"
+          element={user ? <MoodList moods={moods} /> : <Landing />}
+        />
+        <Route path="/sign-up" element={<SignUpForm />} />
+        <Route path="/sign-in" element={<SignInForm />} />
         <Route
           path="/moods/new"
           element={<MoodForm setMoods={setMoods} moods={moods} />}
@@ -35,9 +40,7 @@ const App = () => {
         <Route
           path="/moods/:moodId"
           element={<MoodDetail setMoods={setMoods} moods={moods} />}
-        />
-        <Route path="/sign-up" element={<SignUpForm />} />
-        <Route path="/sign-in" element={<SignInForm />} />
+        />{" "}
       </Routes>
     </>
   );
