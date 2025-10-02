@@ -5,7 +5,6 @@ import * as moodService from "../../services/MoodService.js";
 function MoodDetail({moods, setMood}) {
   const params = useParams();
   const navigate = useNavigate();
-  const [mood, setMood] = useState({});
   const [isEditing, setIsEditing] = useState(false);
   const [error, setError] = useState("");
 

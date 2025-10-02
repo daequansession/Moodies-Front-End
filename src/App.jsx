@@ -1,8 +1,9 @@
 import { useState, useEffect, useContext } from "react";
 import { Route, Routes } from "react-router";
 import * as moodService from "./services/MoodService.js";
-import MoodDetail from "./components/MoodDetail/MoodDetail.jsx";
+import GuestLanding from "./components/GuestLanding/GuestLanding.jsx"
 import MoodList from "./components/MoodList/MoodList.jsx";
+import MoodDetail from "./components/MoodDetail/MoodDetail.jsx";
 import MoodForm from "./components/MoodForm/MoodForm.jsx";
 import NavBar from "./components/NavBar/NavBar.jsx";
 import { UserContext } from "./contexts/UserContext.jsx";
@@ -28,7 +29,7 @@ const App = () => {
       <Routes>
         <Route
           path="/"
-          element={user ? <MoodList moods={moods} /> : <Landing />}
+          element={user ? <MoodList moods={moods} /> : <GuestLanding />}
         />
         <Route path="/sign-up" element={<SignUpForm />} />
         <Route path="/sign-in" element={<SignInForm />} />

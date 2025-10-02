@@ -1,8 +1,15 @@
 const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/moods`;
 
-const index = async () => {
+const index = async (moodData) => {
   try {
-    const res = await fetch(BASE_URL);
+    const res = await fetch(BASE_URL, {
+      method: "GET",
+      body: JSON.stringify(moodData),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
     const data = await res.json();
 
     return data;
@@ -13,7 +20,14 @@ const index = async () => {
 
 const show = async (moodId) => {
   try {
-    const res = await fetch(BASE_URL + `/${moodId}`);
+    const res = await fetch(BASE_URL + `/${moodId}`, {
+      method: "GET",
+      body: JSON.stringify(moodId),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
     const data = res.json();
 
     return data;
@@ -29,6 +43,7 @@ const newMood = async (moodData) => {
       body: JSON.stringify(moodData),
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
     const data = await res.json();
@@ -46,6 +61,7 @@ const updateMood = async (moodData) => {
       body: JSON.stringify(moodData),
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
     const data = res.json();
@@ -56,4 +72,22 @@ const updateMood = async (moodData) => {
   }
 };
 
-export { index, show, newMood, updateMood };
+const deleteMood = async (moodData) => {
+  try {
+    const res = await fetch(BASE_URL + `/${moodData._id}`, {
+      method: "DELETE",
+      body: JSON.stringify(moodData),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+    const data = res.json();
+
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export { index, show, newMood, updateMood, deleteMood };

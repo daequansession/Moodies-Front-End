@@ -1,12 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 
+import { newMood } from "../../services/MoodService.js"
 import "./MoodForm.css";
 
-// need to import mood service
-// import props
 
-const moodForm = () => {
+const moodForm = ({moods, setMoods}) => {
   const navigate = useNavigate();
 
   const formatDate = (date) => {
@@ -26,9 +25,20 @@ const moodForm = () => {
     event.preventDefault();
     const moodRequest = await newMood(moodData);
 
-    setMood([...moods, moodRequest]);
-    setMoodData({});
-    navigate("/");
+    console.log("Moods", moods);
+    console.log("moodRequest", moodRequest);
+    if (moods)
+      setMoods([...moods, moodRequest]);
+    else
+      setMoods([moodRequest]);
+      setMoodData({
+        emotion: "",
+        physical: "",
+        intensity: 5,
+        timeOfEmotion: formatDate(new Date()),
+        comments: { note: "" },
+      });
+      navigate("/");
   };
 
   return (
@@ -65,7 +75,7 @@ const moodForm = () => {
         />
 
         {/* intensity input */}
-        <label>On a scale of 1 to 10, the intensity of the mood: </label>
+        <label>On a scale of 1 to 10, the intensity of the mood:</label>
         <select
           value={moodData.intensity}
           onChange={(event) =>
@@ -90,14 +100,21 @@ const moodForm = () => {
 
         {/* time of emotion input */}
         <label>Day of Mood: </label>
-        <input type="date" value={moodData.timeOfEmotion} />
+        <input
+          type="date"
+          value={moodData.timeOfEmotion} 
+          onChange={(event) => {
+            setMoodData({...moodData, timeOfEmotion: event.target.value})}
+          }
+          max={formatDate(new Date())}
+        />
 
         {/* notes input */}
         <label>Note: </label>
         <textarea
           value={moodData.comments.note}
           onChange={(event) =>
-            setMoodData({ ...moodData.comments, note: event.target.value })
+            setMoodData({ ...moodData,  comments: { ...moodData.comments, note: event.target.value } })
           }
           placeholder="anything else?"
         />

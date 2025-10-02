@@ -6,17 +6,20 @@ const MoodList = ({ moods }) => {
     <div>
       <h1>Mood List</h1>
       <div>
-        {moods.length === 0 ? (
+        {!moods || !Array.isArray(moods) ? (
           <p>You have no moods</p>
         ) : (
           <ul>
             {moods.map((mood) => (
-              <Link key={mood._id} to={`/moods/${mood._id}`}>
-                <li>{mood.emotion}</li>
-                <li>{mood.timeOfEmotion}</li>
-              </Link>
+              <li key={mood._id}>
+                <Link to={`/moods/${mood._id}`}>
+                  <strong>{mood.emotion}</strong>
+                  {<p>{mood.timeOfEmotion}</p>}
+                </Link>
+              </li>
             ))}
           </ul>
+
         )}
       </div>
       <Link to="/moods/new">
