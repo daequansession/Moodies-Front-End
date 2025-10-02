@@ -1,24 +1,37 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router";
+import * as moodService from "../../services/MoodService.js";
 import "./MoodList.css";
 
 const formatDate = (date) => {
-    return date.toISOString().split("T")[0];
-  };
+  return date.toISOString().split("T")[0];
+};
 
-const MoodList = ({ moods }) => {
+const MoodList = () => {
+  const [moods, setMoods] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const moodsPerPage = 5;
 
-  const revMoods = Array.isArray(moods) ? [...moods].reverse() : [];
-  const currMoods = revMoods.slice((currentPage - 1) * moodsPerPage, currentPage * moodsPerPage);
+  useEffect(() => {
+    const fetchMoods = async () => {
+      const data = await moodService.index();
+      setMoods(data || []);
+    };
+    fetchMoods();
+  }, []);
+
+  const revMoods = [...moods].reverse();
+  const currMoods = revMoods.slice(
+    (currentPage - 1) * moodsPerPage,
+    currentPage * moodsPerPage
+  );
   const pages = Math.ceil(revMoods.length / moodsPerPage);
 
   return (
     <div>
       <h1>Moodies</h1>
       <div>
-        {currMoods.length === 0  ? (
+        {currMoods.length === 0 ? (
           <p>You have no moods</p>
         ) : (
           <ul>
@@ -26,36 +39,37 @@ const MoodList = ({ moods }) => {
               <li key={mood._id}>
                 <Link to={`/moods/${mood._id}`}>
                   <strong>{mood.emotion}</strong>
-                  {<p>{formatDate(new Date(mood.timeOfEmotion))}</p>}
+                  <p>{formatDate(new Date(mood.timeOfEmotion))}</p>
                 </Link>
               </li>
             ))}
           </ul>
         )}
-        </div>{pages > 1 && (
-          <div className="pagination">
-            <button
-              disabled={currentPage === 1}
-              onClick={() => setCurrentPage((prev) => prev - 1)}
-            >
-              Prev
-            </button>
+      </div>
 
-            <span>
-              Page {currentPage} of {pages}
-            </span>
+      {pages > 1 && (
+        <div className="pagination">
+          <button
+            disabled={currentPage === 1}
+            onClick={() => setCurrentPage((prev) => prev - 1)}
+          >
+            Prev
+          </button>
+          <span>
+            Page {currentPage} of {pages}
+          </span>
+          <button
+            disabled={currentPage === pages}
+            onClick={() => setCurrentPage((prev) => prev + 1)}
+          >
+            Next
+          </button>
+        </div>
+      )}
 
-            <button
-              disabled={currentPage === pages}
-              onClick={() => setCurrentPage((prev) => prev + 1)}
-            >
-              Next
-            </button>
-          </div>
-        )}
-        <Link to="/moods/new">
-          <button>Add Mood</button>
-        </Link>
+      <Link to="/moods/new">
+        <button>Add Mood</button>
+      </Link>
     </div>
   );
 };
