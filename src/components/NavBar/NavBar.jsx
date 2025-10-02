@@ -1,22 +1,23 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router";
 import { UserContext } from "../../contexts/UserContext";
-import Resources from "../Resources/Resources.jsx"
+import Resources from "../Resources/Resources.jsx";
 import "./NavBar.css";
 
 const NavBar = () => {
-  const [showResource, setShowResource] = useState(false) 
+  const [showResource, setShowResource] = useState(false);
 
   const { user, setUser } = useContext(UserContext);
 
   const handleSignOut = () => {
     localStorage.removeItem("token");
     setUser(null);
+    setMoods([]);
   };
 
   const handleClick = () => {
-    console.log("I was clicked")
-  }
+    console.log("I was clicked");
+  };
 
   return (
     <nav>

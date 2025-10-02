@@ -1,30 +1,61 @@
+import { useState } from "react";
 import { Link } from "react-router";
 import "./MoodList.css";
 
+const formatDate = (date) => {
+    return date.toISOString().split("T")[0];
+  };
+
 const MoodList = ({ moods }) => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const moodsPerPage = 5;
+
+  const revMoods = Array.isArray(moods) ? [...moods].reverse() : [];
+  const currMoods = revMoods.slice((currentPage - 1) * moodsPerPage, currentPage * moodsPerPage);
+  const pages = Math.ceil(revMoods.length / moodsPerPage);
+
   return (
     <div>
-      <h1>Mood List</h1>
+      <h1>Moodies</h1>
       <div>
-        {!moods || !Array.isArray(moods) ? (
+        {currMoods.length === 0  ? (
           <p>You have no moods</p>
         ) : (
           <ul>
-            {moods.map((mood) => (
+            {currMoods.map((mood) => (
               <li key={mood._id}>
                 <Link to={`/moods/${mood._id}`}>
                   <strong>{mood.emotion}</strong>
-                  {<p>{mood.timeOfEmotion}</p>}
+                  {<p>{formatDate(new Date(mood.timeOfEmotion))}</p>}
                 </Link>
               </li>
             ))}
           </ul>
-
         )}
-      </div>
-      <Link to="/moods/new">
-        <button>Add Mood</button>
-      </Link>
+        </div>{pages > 1 && (
+          <div className="pagination">
+            <button
+              disabled={currentPage === 1}
+              onClick={() => setCurrentPage((prev) => prev - 1)}
+            >
+              Prev
+            </button>
+
+            <span>
+              Page {currentPage} of {pages}
+            </span>
+
+            <button
+              disabled={currentPage === pages}
+              onClick={() => setCurrentPage((prev) => prev + 1)}
+            >
+              Next
+            </button>
+          </div>
+        )}
+        <Link to="/moods/new">
+          <button>Add Mood</button>
+        </Link>
     </div>
   );
 };
