@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Route, Routes } from "react-router";
+import * as moodService from "./services/MoodService.js";
 import MoodDetail from "./components/MoodDetail/MoodDetail.jsx";
 import MoodList from "./components/MoodList/MoodList.jsx";
 import MoodForm from "./components/MoodForm/MoodForm.jsx";
@@ -11,7 +12,8 @@ import "./src/App.jsx";
 import "./src/App.css";
 
 const App = () => {
-  const [mood, setMoods] = useState([]);
+  const [moods, setMoods] = useState([]);
+  const { user } = useContext(UserContext);
 
   useEffect(() => {
     const getMoods = async () => {
@@ -26,10 +28,13 @@ const App = () => {
       <NavBar />
       <Routes>
         <Route path="/" element={<MoodList moods={moods} />} />
-        <Route path="/moods/new" element={<MoodForm setMoods={setMoods} />} />
+        <Route
+          path="/moods/new"
+          element={<MoodForm setMoods={setMoods} moods={moods} />}
+        />
         <Route
           path="/moods/:moodId"
-          element={<MoodDetail setMoods={setMoods} />}
+          element={<MoodDetail setMoods={setMoods} moods={moods} />}
         />
         <Route path="/sign-up" element={<SignUpForm />} />
         <Route path="/sign-in" element={<SignInForm />} />
