@@ -1,8 +1,8 @@
 const GuestLanding = () => {
   return (
     <main>
-      <h1>Hello, you are on the landing page for visitors.</h1>
-      <p>Sign up now, or sign in to see your super secret dashboard!</p>
+      <h1>Moodies</h1>
+      <p>Your Online Mood Logger</p>
     </main>
   );
 };
