@@ -5,10 +5,9 @@ import MoodDetail from "./components/MoodDetail/MoodDetail.jsx";
 import MoodList from "./components/MoodList/MoodList.jsx";
 import MoodForm from "./components/MoodForm/MoodForm.jsx";
 import NavBar from "./components/NavBar/NavBar.jsx";
-import { UserContext } from "./src/contexts/UserContext.jsx";
+import { UserContext } from "/src/contexts/UserContext.jsx";
 import SignUpForm from "./components/SignUpForm/SignUpForm.jsx";
 import SignInForm from "./components/SignInForm/SignInForm.jsx";
-import "./src/App.jsx";
 import "./src/App.css";
 
 const App = () => {
