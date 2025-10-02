@@ -1,10 +1,14 @@
 import { Link } from "react-router";
 import "./MoodList.css";
 
+const formatDate = (date) => {
+    return date.toISOString().split("T")[0];
+  };
+
 const MoodList = ({ moods }) => {
   return (
     <div>
-      <h1>Mood List</h1>
+      <h1>Moodies</h1>
       <div>
         {!moods || !Array.isArray(moods) ? (
           <p>You have no moods</p>
@@ -14,7 +18,7 @@ const MoodList = ({ moods }) => {
               <li key={mood._id}>
                 <Link to={`/moods/${mood._id}`}>
                   <strong>{mood.emotion}</strong>
-                  {<p>{mood.timeOfEmotion}</p>}
+                  {<p>{formatDate(mood.timeOfEmotion)}</p>}
                 </Link>
               </li>
             ))}
