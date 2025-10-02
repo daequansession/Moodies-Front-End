@@ -7,4 +7,8 @@ const Landing = () => {
   );
 };
 
+<<<<<<< HEAD
 export default Landing;
+=======
+export default Landing;
+>>>>>>> 7c99832 (Init commit:)
