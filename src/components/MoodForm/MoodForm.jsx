@@ -4,8 +4,6 @@ import { useNavigate } from "react-router";
 import { newMood } from "../../services/MoodService.js"
 import "./MoodForm.css";
 
-// need to import mood service
-// import props
 
 const moodForm = ({moods, setMoods}) => {
   const navigate = useNavigate();
@@ -33,8 +31,14 @@ const moodForm = ({moods, setMoods}) => {
       setMoods([...moods, moodRequest]);
     else
       setMoods([moodRequest]);
-    setMoodData({});
-    navigate("/");
+      setMoodData({
+        emotion: "",
+        physical: "",
+        intensity: 5,
+        timeOfEmotion: formatDate(new Date()),
+        comments: { note: "" },
+      });
+      navigate("/");
   };
 
   return (
@@ -71,7 +75,7 @@ const moodForm = ({moods, setMoods}) => {
         />
 
         {/* intensity input */}
-        <label>On a scale of 1 to 10, the intensity of the mood: </label>
+        <label>On a scale of 1 to 10, the intensity of the mood:</label>
         <select
           value={moodData.intensity}
           onChange={(event) =>
@@ -102,6 +106,7 @@ const moodForm = ({moods, setMoods}) => {
           onChange={(event) => {
             setMoodData({...moodData, timeOfEmotion: event.target.value})}
           }
+          max={formatDate(new Date())}
         />
 
         {/* notes input */}
@@ -109,7 +114,7 @@ const moodForm = ({moods, setMoods}) => {
         <textarea
           value={moodData.comments.note}
           onChange={(event) =>
-            setMoodData({ ...moodData.comments, note: event.target.value })
+            setMoodData({ ...moodData,  comments: { ...moodData.comments, note: event.target.value } })
           }
           placeholder="anything else?"
         />
