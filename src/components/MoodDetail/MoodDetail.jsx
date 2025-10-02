@@ -8,6 +8,11 @@ function MoodDetail({moods, setMood}) {
   const [isEditing, setIsEditing] = useState(false);
   const [error, setError] = useState("");
 
+   // format date to show only day, not time
+    const formatDate = (date) => {
+    return date.toISOString().split("T")[0];
+  };
+
   useEffect(() => {
     const getMood = async () => {
       const mood = await moodService.show(params.moodId);

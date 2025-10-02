@@ -8,6 +8,7 @@ import "./MoodForm.css";
 const moodForm = ({moods, setMoods}) => {
   const navigate = useNavigate();
 
+   // format date to show only day, not time
   const formatDate = (date) => {
     return date.toISOString().split("T")[0];
   };
@@ -46,6 +47,7 @@ const moodForm = ({moods, setMoods}) => {
       <h1>Log New Mood</h1>
 
       <form onSubmit={handleSubmit}>
+        
         {/* emotion input */}
         <label>Mood: </label>
         <select
