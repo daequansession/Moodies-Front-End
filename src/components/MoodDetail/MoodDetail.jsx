@@ -8,11 +8,17 @@ import * as moodService from "../../services/MoodService.js";
     return date.toISOString().split("T")[0];
   };
 
-function MoodDetail({moods, setMood}) {
+function MoodDetail() {
   const params = useParams();
   const navigate = useNavigate();
 
-  const [mood, setMood] = useState();
+  const [mood, setMood] = useState({
+    emotion: "",
+    physical: "",
+    intensity: 5,
+    timeOfEmotion: formatDate(new Date()),
+    comments: { note: "" },
+  });
   const [isEditing, setIsEditing] = useState(false);
   const [error, setError] = useState("");
 
@@ -41,7 +47,7 @@ function MoodDetail({moods, setMood}) {
   // handle delete function
   const handleDelete = async (event) => {
       event.preventDefault();
-      const deleteMood = await moodService.deleteMood(moods);
+      const deleteMood = await moodService.deleteMood(mood._id);
       if (!deleteMood) {
          setError("There was an error, please try again!")
       } else {
@@ -126,7 +132,7 @@ function MoodDetail({moods, setMood}) {
           <input 
             type="date" 
             value={mood.timeOfEmotion ? formatDate(new Date(mood.timeOfEmotion)) : ""} 
-            onChange={(event) => {setMood({...mood, timeOfEmotion: event.target.value})}}
+            onChange={(event) => {setMood({...mood, timeOfEmotion: new Date(event.target.value)})}}
             max={formatDate(new Date())}
           />
 
