@@ -39,7 +39,7 @@ const App = () => {
         />
         <Route
           path="/moods/:moodId"
-          element={<MoodDetail setMood={setMoods} moods={moods} />}
+          element={<MoodDetail />}
         />{" "}
       </Routes>
     </>
