@@ -26,7 +26,7 @@ function MoodDetail({moods, setMood}) {
       setError("There was an error, try again");
     } else {
       setIsEditing(false);
-      navigate(`/moods/${mood._id}`);
+      navigate(`/moods/${moods._id}`);
     }
   };
 
@@ -115,7 +115,12 @@ function MoodDetail({moods, setMood}) {
 
           {/* time of emotion edit */}
           <label>Day of Mood: </label>
-          <input type="date" value={moods.timeOfEmotion} />
+          <input 
+            type="date" 
+            value={moods.timeOfEmotion} 
+            onChange={(event) => {setMoodData({...moodData, timeOfEmotion: event.target.value})}}
+            max={formatDate(new Date())}
+          />
 
           {/* notes edit */}
           <label>Note: </label>
@@ -130,6 +135,10 @@ function MoodDetail({moods, setMood}) {
         </form>
 
       )}
+
+       <button onClick={() => setIsEditing(!isEditing)}>
+        {!isEditing ? "Update Mood" : "Cancel Edit"}
+      </button>
 
     </>
   );
