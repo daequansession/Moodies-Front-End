@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { Route, Routes } from "react-router";
-import * as moodService from "./services/MoodService.js";
+import { index } from "./services/MoodService.js";
 import GuestLanding from "./components/GuestLanding/GuestLanding.jsx"
 import MoodList from "./components/MoodList/MoodList.jsx";
 import MoodDetail from "./components/MoodDetail/MoodDetail.jsx";
@@ -16,16 +16,16 @@ const App = () => {
   const { user } = useContext(UserContext);
 
   useEffect(() => {
-    const getMoods = async () => {
-      const allMoods = await moodService.index();
-      setMoods(allMoods);
-    };
-    getMoods();
-  }, []);
+    if (user) {
+      index().then(setMoods);
+    } else {
+      setMoods([]);
+    }
+  }, [user]);
 
   return (
     <>
-      <NavBar />
+      <NavBar setMoods={setMoods} />
       <Routes>
         <Route
           path="/"
