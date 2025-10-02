@@ -25,7 +25,7 @@ function MoodDetail({moods, setMood}) {
    // handle submit function
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const editMood = await moodService.updateMood(mood);
+    const editMood = await moodService.updateMood(moods);
 
     if (!editMood) {
       setError("There was an error, try again");
