@@ -16,8 +16,9 @@
   margin-bottom: 1.25rem;
   text-align: center;
   color: #545643; /* dark olive for strong header */
-  border-bottom: 2px solid #bbacc1;
+  border-bottom: 2px solid #000000;
   padding-bottom: 0.5rem;
+  background-color: rgb(5, 5, 5);
 }
 
 /* Main list */
