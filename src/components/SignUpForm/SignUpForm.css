@@ -4,8 +4,5 @@ input {
 
 button {
   margin: 10px;
-}
-
-.error-message {
-  color: red;
+  color: #000000;
 }

@@ -5,6 +5,7 @@
 }
 
 .resources h1 {
+  color: #f1dede;
   font-size: 1.5rem;
   margin-bottom: 1rem;
 }
@@ -19,6 +20,7 @@
 .resources li {
   display: block; /* force stack vertically */
   margin-bottom: 0.5rem;
+  color: #000000;
 }
 
 .helpline-name {
@@ -27,10 +29,10 @@
 }
 
 .resources a {
-  color: #0070f3; /* your theme color */
+  color: #f1dede; /* your theme color */
   text-decoration: underline;
 }
 
 .resources a:hover {
-  color: #0056b3;
+  color: #000000;
 }

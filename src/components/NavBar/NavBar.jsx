@@ -24,7 +24,6 @@ const NavBar = () => {
     <nav>
       {user ? (
         <>
-          <h4>{user.username}</h4>
           <ul>
             <li>
               <Link to="/">Home</Link>
