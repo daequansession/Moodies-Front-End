@@ -7,12 +7,43 @@
 }
 
 ul {
-   display: flex;
-   justify-content: space-evenly;
-   list-style: none;
-   text-align: center;
+  display: flex;
+  justify-content: space-evenly;
+  list-style: none;
+  text-align: center;
 }
 
 .mood-link {
-   text-decoration: none;
+  text-decoration: none;
+}
+
+.add-button {
+   display: flex;
+}
+
+.add-button {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px; 
+}
+
+button {
+  padding: 7px;
+  border-radius: 10px;
+  background-color: #f1dede;
+  color: #1a0c15;
+  border: #80727b solid 2px;
+}
+
+button:hover {
+  background-color: #80727b;
+  color: #f1dede;
+  cursor: pointer;
+}
+
+.mood-card {
+   border: black solid 2px;
+    padding: 30px;
+    border-radius: 10px;
+   background-color: #F1DEDE;
 }

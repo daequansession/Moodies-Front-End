@@ -33,14 +33,14 @@ const MoodList = () => {
         {currMoods.length === 0 ? (
           <p>You have no moods</p>
         ) : (
-          <ul className="mood-card">
+          <ul >
             {currMoods.map((mood) => (
-              <li key={mood._id}>
-                <Link to={`/moods/${mood._id}`} className="mood-link">
+              <Link to={`/moods/${mood._id}`} className="mood-link">
+              <li key={mood._id} className="mood-card">
                   <strong>{mood.emotion}</strong>
                   <p>{formatDate(new Date(mood.timeOfEmotion))}</p>
-                </Link>
               </li>
+              </Link>
             ))}
           </ul>
         )}
@@ -66,7 +66,7 @@ const MoodList = () => {
         </div>
       )}
 
-      <Link to="/moods/new">
+      <Link to="/moods/new" className="add-button">
         <button>Add Mood</button>
       </Link>
     </div>
