@@ -2,8 +2,9 @@
   display: flex;
   justify-content: center;
   padding: 25px;
-  margin-bottom: 20px;
+  margin-bottom: 45px;
   margin-top: 50px;
+  font-size: 6vh;
 }
 
 ul {
@@ -18,13 +19,9 @@ ul {
 }
 
 .add-button {
-   display: flex;
-}
-
-.add-button {
   display: flex;
   justify-content: center;
-  margin-top: 20px; 
+  margin-top: 50px;
 }
 
 button {
@@ -33,6 +30,7 @@ button {
   background-color: #f1dede;
   color: #1a0c15;
   border: #80727b solid 2px;
+  font-size: 15px;
 }
 
 button:hover {
@@ -42,8 +40,17 @@ button:hover {
 }
 
 .mood-card {
-   border: black solid 2px;
-    padding: 30px;
-    border-radius: 10px;
-   background-color: #F1DEDE;
+  border: black solid 2px;
+  padding: 30px;
+  border-radius: 10px;
+  background-color: #f1dede;
+}
+
+li p,
+li strong {
+  background-color: #f1dede;
+}
+
+li p {
+   margin-top: 10px;
 }
