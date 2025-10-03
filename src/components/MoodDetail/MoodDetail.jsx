@@ -81,6 +81,8 @@ function MoodDetail() {
             </h2>
             <h2>Physical Experience: {mood.physical}</h2>
             <h2>Intensity of Mood: {mood.intensity}</h2>
+            {mood.comments?.note && <h2>Note: {mood.comments.note}</h2>}
+            
 
             <form onSubmit={handleDelete}>
               <button type="submit">Remove Mood</button>
