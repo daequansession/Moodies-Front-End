@@ -69,6 +69,20 @@ const MoodList = () => {
       <Link to="/moods/new" className="add-button">
         <button>Add Mood</button>
       </Link>
+
+      {/*
+      <button
+        type="button"
+        onClick={async () => {
+          if (window.confirm("Are you sure you want to delete ALL moods?")) {
+            await deleteAllMoods();
+            navigate("/"); // or refresh state
+          }
+        }}
+      >
+        Delete All Moods
+      </button>
+      */}
     </div>
   );
 };
