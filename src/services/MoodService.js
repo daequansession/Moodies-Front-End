@@ -19,6 +19,7 @@ const getUserMoods = async () => {
 
 const getMood = async (moodId) => {
   try {
+    console.log(moodId);
     const res = await fetch(BASE_URL + `/${moodId}`, {
       method: "GET",
       headers: {

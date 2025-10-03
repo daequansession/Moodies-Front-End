@@ -26,7 +26,7 @@ const App = () => {
 
   return (
     <>
-      <NavBar setMoods={setMoods} />
+      <NavBar />
       <Routes>
         <Route
           path="/"
