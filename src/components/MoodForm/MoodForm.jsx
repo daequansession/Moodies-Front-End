@@ -5,7 +5,7 @@ import { newMood } from "../../services/MoodService.js"
 import "./MoodForm.css";
 
 
-const moodForm = ({moods, setMoods}) => {
+const MoodForm = ({moods, setMoods}) => {
   const navigate = useNavigate();
 
    // format date to show only day, not time
@@ -57,7 +57,7 @@ const moodForm = ({moods, setMoods}) => {
             setMoodData({ ...moodData, emotion: event.target.value })
           }
         >
-          <option value="">--choose mood--</option>
+          <option value=""></option>
           <option value="Angry">Angry</option>
           <option value="Anxious">Anxious</option>
           <option value="Disgusted">Disgusted</option>
@@ -142,4 +142,4 @@ const moodForm = ({moods, setMoods}) => {
   );
 };
 
-export default moodForm;
+export default MoodForm;
