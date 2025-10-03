@@ -1,0 +1,29 @@
+.mood-list {
+  display: block; /* reset any flex/inline styles */
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.mood-item {
+  display: flex; /* items inside each mood */
+  justify-content: flex-start;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.5rem;
+}
+
+.mood-emotion {
+  flex: 1; /* first column */
+  font-weight: bold;
+}
+
+.mood-date {
+  flex: 1; /* second column */
+  font-style: italic;
+}
+
+.mood-intensity {
+  flex: 1; /* third column */
+}

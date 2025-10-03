@@ -1,6 +1,6 @@
 const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/moods`;
 
-const index = async (moodData) => {
+const getUserMoods = async () => {
   try {
     const res = await fetch(BASE_URL, {
       method: "GET",
@@ -17,7 +17,7 @@ const index = async (moodData) => {
   }
 };
 
-const show = async (moodId) => {
+const getMood = async (moodId) => {
   try {
     const res = await fetch(BASE_URL + `/${moodId}`, {
       method: "GET",
@@ -31,6 +31,20 @@ const show = async (moodId) => {
     return data;
   } catch (error) {
     console.error(error);
+  }
+};
+
+const getSocialMoods = async () => {
+  try {
+    const res = await fetch(BASE_URL + `/social`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    return await res.json();
+  } catch (error) {
+    console.error(error);
+    return [];
   }
 };
 
@@ -87,4 +101,11 @@ const deleteMood = async (id) => {
   }
 };
 
-export { index, show, newMood, updateMood, deleteMood };
+export {
+  getUserMoods,
+  getMood,
+  getSocialMoods,
+  newMood,
+  updateMood,
+  deleteMood,
+};
