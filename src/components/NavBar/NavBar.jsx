@@ -10,13 +10,15 @@ const NavBar = () => {
   const { user, setUser } = useContext(UserContext);
 
   const handleSignOut = () => {
-    localStorage.removeItem("token");
-    setUser(null);
-    setMoods([]);
+    if (window.confirm("Are you sure you want to sign out?"))
+    {
+      localStorage.removeItem("token");
+      setUser(null);
+      setMoods([]);
+    }
   };
 
-  const handleClick = () => {
-    console.log("I was clicked");
+  const handleClickResources = () => {
     setShowResource((prev) => !prev);
   };
 
@@ -46,7 +48,10 @@ const NavBar = () => {
         </ul>
       )}
       <ul>
-        <li onClick={handleClick}>Resources</li>
+        <li> 
+          <Link to="/social">Social</Link>
+        </li>
+        <li onClick={handleClickResources}>Resources</li>
       </ul>
 
       <div className="resource-container">{showResource && <Resources />}</div>

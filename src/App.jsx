@@ -1,8 +1,9 @@
 import { useState, useEffect, useContext } from "react";
 import { Route, Routes } from "react-router";
-import { index } from "./services/MoodService.js";
+import { getUserMoods } from "./services/MoodService.js";
 import GuestLanding from "./components/GuestLanding/GuestLanding.jsx"
 import MoodList from "./components/MoodList/MoodList.jsx";
+import MoodSocial from "./components/MoodSocial/MoodSocial.jsx";
 import MoodDetail from "./components/MoodDetail/MoodDetail.jsx";
 import MoodForm from "./components/MoodForm/MoodForm.jsx";
 import NavBar from "./components/NavBar/NavBar.jsx";
@@ -17,7 +18,7 @@ const App = () => {
 
   useEffect(() => {
     if (user) {
-      index().then(setMoods);
+      getUserMoods().then(setMoods);
     } else {
       setMoods([]);
     }
@@ -25,12 +26,13 @@ const App = () => {
 
   return (
     <>
-      <NavBar setMoods={setMoods} />
+      <NavBar />
       <Routes>
         <Route
           path="/"
-          element={user ? <MoodList moods={moods} /> : <GuestLanding />}
+          element={user ? <MoodList /> : <GuestLanding />}
         />
+        <Route path="/social" element={<MoodSocial />}/>
         <Route path="/sign-up" element={<SignUpForm />} />
         <Route path="/sign-in" element={<SignInForm />} />
         <Route
@@ -39,7 +41,7 @@ const App = () => {
         />
         <Route
           path="/moods/:moodId"
-          element={<MoodDetail setMoods={setMoods} moods={moods} />}
+          element={<MoodDetail />}
         />{" "}
       </Routes>
     </>
