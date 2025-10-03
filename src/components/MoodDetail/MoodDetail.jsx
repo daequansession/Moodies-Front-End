@@ -45,6 +45,10 @@ function MoodDetail() {
   // handle delete function
   const handleDelete = async (event) => {
     event.preventDefault();
+
+    if (!window.confirm("Are you sure you want to delete this Moodie?"))
+      return ;
+
     const deleteMood = await moodService.deleteMood(mood._id);
     if (!deleteMood) {
       setError("There was an error, please try again!");
