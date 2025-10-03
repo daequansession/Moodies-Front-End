@@ -35,13 +35,17 @@ const MoodList = () => {
         {currMoods.length === 0 ? (
           <p>You have no moods</p>
         ) : (
-          <ul >
+          <ul>
             {currMoods.map((mood) => (
-              <Link to={`/moods/${mood._id}`} className="mood-link">
-              <li key={mood._id} className="mood-card">
+              <Link 
+                to={`/moods/${mood._id}`} 
+                className="mood-link" 
+                key={mood._id}
+              >
+                <li className="mood-card">
                   <strong>{mood.emotion}</strong>
                   <p>{formatDate(new Date(mood.timeOfEmotion))}</p>
-              </li>
+                </li>
               </Link>
             ))}
           </ul>
@@ -72,19 +76,19 @@ const MoodList = () => {
         <button>Add Mood</button>
       </Link>
 
-    {DELETE_GLOBAL_ENABLED && (
-      <button
-        type="button"
-        onClick={async () => {
-          if (window.confirm("Are you sure you want to delete ALL moods?")) {
-            await moodService.deleteAbsoluteAllMoods();
-            setMoods([]); // clear local state too
-          }
-        }}
-      >
-        Delete All Moods (Global)
-      </button>
-    )}
+      {DELETE_GLOBAL_ENABLED && (
+        <button
+          type="button"
+          onClick={async () => {
+            if (window.confirm("Are you sure you want to delete ALL moods?")) {
+              await moodService.deleteAbsoluteAllMoods();
+              setMoods([]); // clear local state too
+            }
+          }}
+        >
+          Delete All Moods (Global)
+        </button>
+      )}
       
     </div>
   );
