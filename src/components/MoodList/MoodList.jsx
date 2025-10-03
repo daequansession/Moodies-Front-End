@@ -3,6 +3,8 @@ import { Link } from "react-router";
 import * as moodService from "../../services/MoodService.js";
 import "./MoodList.css";
 
+const DELETE_GLOBAL_ENABLED = false;
+
 const formatDate = (date) => {
   return date.toISOString().split("T")[0];
 };
@@ -69,6 +71,21 @@ const MoodList = () => {
       <Link to="/moods/new" className="add-button">
         <button>Add Mood</button>
       </Link>
+
+    {DELETE_GLOBAL_ENABLED && (
+      <button
+        type="button"
+        onClick={async () => {
+          if (window.confirm("Are you sure you want to delete ALL moods?")) {
+            await moodService.deleteAbsoluteAllMoods();
+            setMoods([]); // clear local state too
+          }
+        }}
+      >
+        Delete All Moods (Global)
+      </button>
+    )}
+      
     </div>
   );
 };

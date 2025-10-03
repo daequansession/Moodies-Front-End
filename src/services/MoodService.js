@@ -102,6 +102,27 @@ const deleteMood = async (id) => {
   }
 };
 
+const deleteAbsoluteAllMoods = async () => {
+  try {
+    const res = await fetch(BASE_URL + "/all", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+
+    if (!res.ok) {
+      const text = await res.text();
+      throw new Error(`Delete all failed: ${res.status} ${text}`);
+    }
+
+    return await res.json(); // { message: "All moods deleted" }
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 export {
   getUserMoods,
   getMood,
@@ -109,4 +130,5 @@ export {
   newMood,
   updateMood,
   deleteMood,
+  deleteAbsoluteAllMoods,
 };
