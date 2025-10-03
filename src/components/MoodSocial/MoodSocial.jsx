@@ -35,11 +35,11 @@ const MoodSocial = () => {
         ) : (
           <ul className="mood-list">
             {currMoods.map((mood) => (
-            <li key={mood._id} className="mood-item">
-              <span className="mood-emotion">{mood.emotion}</span>
-              <span className="mood-date">{formatDate(new Date(mood.timeOfEmotion))}</span>
-              <span className="mood-intensity">Intensity: {mood.intensity}</span>
-            </li>
+              <li key={mood._id} className="mood-item">
+                <span className="mood-emotion">{mood.emotion}</span>
+                <span className="mood-date">{formatDate(new Date(mood.timeOfEmotion))}</span>
+                <span className="mood-intensity">Intensity: {mood.intensity}</span>
+              </li>
             ))}
           </ul>
         )}
