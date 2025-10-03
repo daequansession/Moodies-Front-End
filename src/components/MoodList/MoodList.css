@@ -1,0 +1,18 @@
+.moodlist-title {
+  display: flex;
+  justify-content: center;
+  padding: 25px;
+  margin-bottom: 20px;
+  margin-top: 50px;
+}
+
+ul {
+   display: flex;
+   justify-content: space-evenly;
+   list-style: none;
+   text-align: center;
+}
+
+.mood-link {
+   text-decoration: none;
+}

@@ -44,11 +44,12 @@ const moodForm = ({moods, setMoods}) => {
 
   return (
     <>
-      <h1>Log New Mood</h1>
+      <h1 className="moodform-title">Log New Mood</h1>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="mood-form">
         
         {/* emotion input */}
+        <div className="form-element">
         <label>Mood: </label>
         <select
           value={moodData.emotion}
@@ -56,27 +57,32 @@ const moodForm = ({moods, setMoods}) => {
             setMoodData({ ...moodData, emotion: event.target.value })
           }
         >
-          <option value="">-choose mood-</option>
-          <option value="angry">Angry</option>
-          <option value="anxious">Anxious</option>
-          <option value="disgusted">Disgusted</option>
-          <option value="happy">Happy</option>
-          <option value="sad">Sad</option>
-          <option value="scared">Scared</option>
-          <option value="surprised">Surprised</option>
+          <option value="">--choose mood--</option>
+          <option value="Angry">Angry</option>
+          <option value="Anxious">Anxious</option>
+          <option value="Disgusted">Disgusted</option>
+          <option value="Happy">Happy</option>
+          <option value="Sad">Sad</option>
+          <option value="Scared">Scared</option>
+          <option value="Surprised">Surprised</option>
         </select>
+        </div>
 
-        {/* physical emotional experience input */}
-        <label>Physical experience of mood: </label>
-        <textarea
-          value={moodData.physical}
-          onChange={(event) =>
-            setMoodData({ ...moodData, physical: event.target.value })
+             {/* time of emotion input */}
+        <div className="form-element">
+        <label>Day of Mood: </label>
+        <input
+          type="date"
+          value={moodData.timeOfEmotion} 
+          onChange={(event) => {
+            setMoodData({...moodData, timeOfEmotion: event.target.value})}
           }
-          placeholder="where do you feel this mood in your body?"
+          max={formatDate(new Date())}
         />
+        </div>
 
-        {/* intensity input */}
+              {/* intensity input */}
+        <div className="form-element">
         <label>On a scale of 1 to 10, the intensity of the mood:</label>
         <select
           value={moodData.intensity}
@@ -99,19 +105,26 @@ const moodForm = ({moods, setMoods}) => {
           <option value="9">9</option>
           <option value="10">10</option>
         </select>
+        </div>
 
-        {/* time of emotion input */}
-        <label>Day of Mood: </label>
-        <input
-          type="date"
-          value={moodData.timeOfEmotion} 
-          onChange={(event) => {
-            setMoodData({...moodData, timeOfEmotion: event.target.value})}
+        {/* physical emotional experience input */}
+        <div className="form-element">
+        <label>Physical experience of mood: </label>
+        <textarea
+          value={moodData.physical}
+          onChange={(event) =>
+            setMoodData({ ...moodData, physical: event.target.value })
           }
-          max={formatDate(new Date())}
+          placeholder="where do you feel this mood in your body?"
         />
+        </div>
+
+  
+
+   
 
         {/* notes input */}
+        <div className="form-element">
         <label>Note: </label>
         <textarea
           value={moodData.comments.note}
@@ -119,7 +132,9 @@ const moodForm = ({moods, setMoods}) => {
             setMoodData({ ...moodData,  comments: { ...moodData.comments, note: event.target.value } })
           }
           placeholder="anything else?"
+          className="note-textarea"
         />
+        </div>
 
         <button type="submit">Add Mood</button>
       </form>

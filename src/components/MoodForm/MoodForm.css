@@ -1,0 +1,36 @@
+.moodform-title {
+  text-align: center;
+  padding: 25px;
+  margin-bottom: 20px;
+  margin-top: 50px;
+}
+
+.mood-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-element {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+label {
+  padding-right: 15px;
+}
+
+select {
+  padding: 3px;
+}
+
+textarea {
+  width: 264px;
+  height: 47px;
+}
+
+.note-textarea {
+  width: 442px;
+  height: 47px;
+}
