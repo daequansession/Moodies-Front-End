@@ -18,8 +18,7 @@ const NavBar = () => {
     }
   };
 
-  const handleClick = () => {
-    console.log("I was clicked");
+  const handleClickResources = () => {
     setShowResource((prev) => !prev);
   };
 
@@ -50,7 +49,10 @@ const NavBar = () => {
         </ul>
       )}
       <ul>
-        <li onClick={handleClick}>Resources</li>
+        <li> 
+          <Link to="/social">Social</Link>
+        </li>
+        <li onClick={handleClickResources}>Resources</li>
       </ul>
 
       <div className="resource-container">{showResource && <Resources />}</div>

@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router";
 import { getUserMoods } from "./services/MoodService.js";
 import GuestLanding from "./components/GuestLanding/GuestLanding.jsx"
 import MoodList from "./components/MoodList/MoodList.jsx";
+import MoodSocial from "./components/MoodSocial/MoodSocial.jsx";
 import MoodDetail from "./components/MoodDetail/MoodDetail.jsx";
 import MoodForm from "./components/MoodForm/MoodForm.jsx";
 import NavBar from "./components/NavBar/NavBar.jsx";
@@ -29,8 +30,9 @@ const App = () => {
       <Routes>
         <Route
           path="/"
-          element={user ? <MoodList moods={moods} /> : <GuestLanding />}
+          element={user ? <MoodList /> : <GuestLanding />}
         />
+        <Route path="/social" element={<MoodSocial />}/>
         <Route path="/sign-up" element={<SignUpForm />} />
         <Route path="/sign-in" element={<SignInForm />} />
         <Route

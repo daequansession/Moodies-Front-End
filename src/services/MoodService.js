@@ -36,7 +36,7 @@ const getMood = async (moodId) => {
 
 const getSocialMoods = async () => {
   try {
-    const res = await fetch(`${BASE_URL}/social`, {
+    const res = await fetch(BASE_URL + `/social`, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -44,6 +44,7 @@ const getSocialMoods = async () => {
     return await res.json();
   } catch (error) {
     console.error(error);
+    return [];
   }
 };
 
