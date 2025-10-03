@@ -27,7 +27,7 @@ const getMood = async (moodId) => {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
-    const data = res.json();
+    const data = await res.json();
 
     return data;
   } catch (error) {
@@ -77,7 +77,7 @@ const updateMood = async (moodData) => {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
-    const data = res.json();
+    const data = await res.json();
 
     return data;
   } catch (error) {
@@ -94,7 +94,7 @@ const deleteMood = async (id) => {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
-    const data = res.json();
+    const data = await res.json();
 
     return data;
   } catch (error) {
