@@ -3,6 +3,8 @@ import { Link } from "react-router";
 import * as moodService from "../../services/MoodService.js";
 import "./MoodList.css";
 
+const DELETE_GLOBAL_ENABLED = false;
+
 const formatDate = (date) => {
   return date.toISOString().split("T")[0];
 };
@@ -33,14 +35,14 @@ const MoodList = () => {
         {currMoods.length === 0 ? (
           <p>You have no moods</p>
         ) : (
-          <ul className="mood-card">
+          <ul >
             {currMoods.map((mood) => (
-              <li key={mood._id}>
-                <Link to={`/moods/${mood._id}`} className="mood-link">
+              <Link to={`/moods/${mood._id}`} className="mood-link">
+              <li key={mood._id} className="mood-card">
                   <strong>{mood.emotion}</strong>
                   <p>{formatDate(new Date(mood.timeOfEmotion))}</p>
-                </Link>
               </li>
+              </Link>
             ))}
           </ul>
         )}
@@ -66,9 +68,24 @@ const MoodList = () => {
         </div>
       )}
 
-      <Link to="/moods/new">
+      <Link to="/moods/new" className="add-button">
         <button>Add Mood</button>
       </Link>
+
+    {DELETE_GLOBAL_ENABLED && (
+      <button
+        type="button"
+        onClick={async () => {
+          if (window.confirm("Are you sure you want to delete ALL moods?")) {
+            await moodService.deleteAbsoluteAllMoods();
+            setMoods([]); // clear local state too
+          }
+        }}
+      >
+        Delete All Moods (Global)
+      </button>
+    )}
+      
     </div>
   );
 };

@@ -72,7 +72,7 @@ function MoodDetail() {
   return (
     <>
       {!isEditing ? (
-        moodIsLoaded() ? (
+        moodIsLoaded(mood) ? (
           <div className="mood-detail">
             <h1 className="mood-detail-title">{mood.emotion}</h1>
             <p>{error}</p>
@@ -100,10 +100,9 @@ function MoodDetail() {
             >
               Edit Mood
             </button>
-            <form onSubmit={handleDelete}>
-              <button type="button">Remove Mood</button>
-            </form>
-
+            <button type="button" onClick={handleDelete}>
+              Remove Mood
+            </button>
           </div>
         ) : (
           <h3>Loading...</h3>
@@ -119,14 +118,14 @@ function MoodDetail() {
                   setEditMood({ ...editMood, emotion: event.target.value })
                 }
               >
-                <option value="">-choose mood-</option>
-                <option value="angry">Angry</option>
-                <option value="anxious">Anxious</option>
-                <option value="disgusted">Disgusted</option>
-                <option value="happy">Happy</option>
-                <option value="sad">Sad</option>
-                <option value="scared">Scared</option>
-                <option value="surprised">Surprised</option>
+                <option value=""></option>
+                <option value="Angry">Angry</option>
+                <option value="Anxious">Anxious</option>
+                <option value="Disgusted">Disgusted</option>
+                <option value="Happy">Happy</option>
+                <option value="Sad">Sad</option>
+                <option value="Scared">Scared</option>
+                <option value="Surprised">Surprised</option>
               </select>
 
               {/* physical experience edit */}
@@ -171,9 +170,9 @@ function MoodDetail() {
                 value={
                   editMood.timeOfEmotion ? formatDate(new Date(editMood.timeOfEmotion)) : ""
                 }
-                onChange={(event) => {
-                  setEditMood({ ...editMood, timeOfEmotion: new Date(event.target.value) });
-                }}
+                onChange={(event) =>
+                  setEditMood({ ...editMood, timeOfEmotion: event.target.value})
+                }
                 max={formatDate(new Date())}
               />
 
