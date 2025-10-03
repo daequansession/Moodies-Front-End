@@ -23,14 +23,17 @@ label {
 
 select {
   padding: 3px;
+  background-color: white;
 }
 
 textarea {
   width: 264px;
   height: 47px;
+  background-color: white;
 }
 
 .note-textarea {
   width: 442px;
   height: 47px;
+  background-color: white;
 }
