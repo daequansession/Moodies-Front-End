@@ -39,8 +39,8 @@ const App = () => {
         />
         <Route
           path="/moods/:moodId"
-          element={<MoodDetail setMoods={setMoods} moods={moods} />}
-        />
+          element={<MoodDetail />}
+        />{" "}
       </Routes>
     </>
   );

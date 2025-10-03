@@ -10,9 +10,12 @@ const NavBar = () => {
   const { user, setUser } = useContext(UserContext);
 
   const handleSignOut = () => {
-    localStorage.removeItem("token");
-    setUser(null);
-    setMoods([]);
+    if (window.confirm("Are you sure you want to sign out?"))
+    {
+      localStorage.removeItem("token");
+      setUser(null);
+      setMoods([]);
+    }
   };
 
   const handleClick = () => {

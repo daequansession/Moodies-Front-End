@@ -4,7 +4,6 @@ const index = async (moodData) => {
   try {
     const res = await fetch(BASE_URL, {
       method: "GET",
-      body: JSON.stringify(moodData),
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -23,7 +22,6 @@ const show = async (moodId) => {
     console.log(moodId);
     const res = await fetch(BASE_URL + `/${moodId}`, {
       method: "GET",
-      body: JSON.stringify(moodId),
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -73,11 +71,10 @@ const updateMood = async (moodData) => {
   }
 };
 
-const deleteMood = async (moodData) => {
+const deleteMood = async (id) => {
   try {
-    const res = await fetch(BASE_URL + `/${moodData._id}`, {
+    const res = await fetch(BASE_URL + `/${id}`, {
       method: "DELETE",
-      body: JSON.stringify(moodData),
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("token")}`,
