@@ -14,7 +14,7 @@ const MoodList = () => {
 
   useEffect(() => {
     const fetchMoods = async () => {
-      const data = await moodService.index();
+      const data = await moodService.getUserMoods();
       setMoods(data || []);
     };
     fetchMoods();

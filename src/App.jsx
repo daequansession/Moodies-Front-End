@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { Route, Routes } from "react-router";
-import { index } from "./services/MoodService.js";
+import { getUserMoods } from "./services/MoodService.js";
 import GuestLanding from "./components/GuestLanding/GuestLanding.jsx"
 import MoodList from "./components/MoodList/MoodList.jsx";
 import MoodDetail from "./components/MoodDetail/MoodDetail.jsx";
@@ -17,7 +17,7 @@ const App = () => {
 
   useEffect(() => {
     if (user) {
-      index().then(setMoods);
+      getUserMoods().then(setMoods);
     } else {
       setMoods([]);
     }
