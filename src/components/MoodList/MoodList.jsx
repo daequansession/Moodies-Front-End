@@ -29,15 +29,15 @@ const MoodList = () => {
 
   return (
     <div>
-      <h1>Moodies</h1>
+      <h1 className="moodlist-title">Moodies</h1>
       <div>
         {currMoods.length === 0 ? (
           <p>You have no moods</p>
         ) : (
-          <ul>
+          <ul className="mood-card">
             {currMoods.map((mood) => (
               <li key={mood._id}>
-                <Link to={`/moods/${mood._id}`}>
+                <Link to={`/moods/${mood._id}`} className="mood-link">
                   <strong>{mood.emotion}</strong>
                   <p>{formatDate(new Date(mood.timeOfEmotion))}</p>
                 </Link>
