@@ -89,8 +89,9 @@ function MoodDetail() {
             <p className="mood-element">
               Intensity of Mood: {mood.intensity}
             </p>
-            {mood.comments?.note && <h2>Note: {mood.comments.note}</h2>}
+            {mood.comments?.note && <p>Note: {mood.comments.note}</p>}
             
+            <div className="buttons">
             <button
               type="button"
               onClick={() => {
@@ -103,6 +104,7 @@ function MoodDetail() {
             <button type="button" onClick={handleDelete}>
               Remove Mood
             </button>
+            </div>
           </div>
         ) : (
           <h3>Loading...</h3>

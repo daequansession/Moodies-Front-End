@@ -47,3 +47,11 @@ button:hover {
     border-radius: 10px;
    background-color: #F1DEDE;
 }
+
+li strong {
+  background-color: #F1DEDE;
+}
+
+li p {
+  background-color: #F1DEDE;
+}
