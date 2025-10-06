@@ -25,8 +25,8 @@ const MoodForm = ({moods, setMoods}) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (!moodData.physical) {
-      alert("Please describe your physical experience before submitting!");
+    if (!moodData.physical || !moodData.emotion) {
+      alert("Please complete the form before submitting!");
       return;
     }
 
