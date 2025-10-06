@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { Route, Routes } from "react-router";
 import { getUserMoods } from "./services/MoodService.js";
-import GuestLanding from "./components/GuestLanding/GuestLanding.jsx"
+import GuestLanding from "./components/GuestLanding/GuestLanding.jsx";
 import MoodList from "./components/MoodList/MoodList.jsx";
 import MoodSocial from "./components/MoodSocial/MoodSocial.jsx";
 import MoodDetail from "./components/MoodDetail/MoodDetail.jsx";
@@ -30,11 +30,8 @@ const App = () => {
     <>
       <NavBar />
       <Routes>
-        <Route
-          path="/"
-          element={user ? <MoodList /> : <GuestLanding />}
-        />
-        <Route path="/social" element={<MoodSocial />}/>
+        <Route path="/" element={user ? <MoodList /> : <GuestLanding />} />
+        <Route path="/social" element={<MoodSocial />} />
         <Route path="/sign-up" element={<SignUpForm />} />
         <Route path="/sign-in" element={<SignInForm />} />
         <Route path="/wheel" element={<Wheel />} />
@@ -42,10 +39,7 @@ const App = () => {
           path="/moods/new"
           element={<MoodForm setMoods={setMoods} moods={moods} />}
         />
-        <Route
-          path="/moods/:moodId"
-          element={<MoodDetail />}
-        />{" "}
+        <Route path="/moods/:moodId" element={<MoodDetail />} />{" "}
       </Routes>
 
       <Footer />
