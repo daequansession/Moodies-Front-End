@@ -27,7 +27,6 @@ const NavBar = () => {
       <div className="nav-img-container">
         <img src={logo} alt="logo" />
       </div>
-      {/* <div> */}
       {user ? (
         <ul>
           <li>
