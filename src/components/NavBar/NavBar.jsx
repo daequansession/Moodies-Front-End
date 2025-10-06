@@ -55,7 +55,6 @@ const NavBar = () => {
         </li>
         <li onClick={handleClickResources}>Resources</li>
       </ul>
-      {/* </div> */}
       <div className="resource-container">{showResource && <Resources />}</div>
     </nav>
   );
