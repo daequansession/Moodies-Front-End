@@ -25,7 +25,6 @@ const NavBar = () => {
   return (
     <nav>
       <img src={logo} alt="logo" />
-      {/* <div> */}
       {user ? (
         <ul>
           <li>
@@ -53,7 +52,6 @@ const NavBar = () => {
         </li>
         <li onClick={handleClickResources}>Resources</li>
       </ul>
-      {/* </div> */}
       <div className="resource-container">{showResource && <Resources />}</div>
     </nav>
   );
