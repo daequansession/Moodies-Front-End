@@ -1,16 +1,63 @@
-# React + Vite
+# Moodies
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+<!-- landing page image -->
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This is the front-end for Moodies, a full-stack MERN application that allows users to track their moods over time. Users may track their moods, the date of the mood, the intensity of the mood, the physical experience of the mood, and any additional notes the user may want to log. 
 
-## React Compiler
+The backend serves as the API layer for the Moodies Frontend Repository can be found [here](https://github.com/DylanTai/Moodies-Backend/tree/dev).
 
-The React Compiler is not enabled on this template. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Our planning materials can be found on [this Trello board](https://trello.com/b/QhxB4rwY/moodies-mern-stack-crud-app-group-project).
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Pre-requisites
+
+- React
+
+### Installation
+
+1. **Fork and Clone the Repo**
+
+```
+git clone <repo>
+cd <cloned repo>
+```
+
+2. **Install Dependencies**
+
+```
+npm install
+
+```
+
+3. **Create .env File**
+
+Create a .env file and link to your backend API
+
+```
+VITE_BACK_END_SERVER_URL= 
+```
+
+4. **Start Your Server**
+
+```
+npm run dev
+```
+
+## Technologies Used
+
+- React     
+
+
+## Stretch Goals
+
+- AAU, I'd like to log moods other than the ones provided in the drop down menu
+- AAU, it owuld be cool to be able to chart my moods and intensities over time
+
+
+## Contributors
+
+- [Daequan Sessíon](https://github.com/daequansession)
+- [Dylan Tai](https://github.com/DylanTai)
+- [Sara Mattina](https://github.com/saramattina)

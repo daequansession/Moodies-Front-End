@@ -93,7 +93,7 @@ const MoodForm = ({moods, setMoods}) => {
 
               {/* intensity input */}
         <div className="form-element">
-        <label>On a scale of 1 to 10, the intensity of the mood:</label>
+        <label className="intensity-label">On a scale of 1 to 10, the intensity of the mood:</label>
         <select
           value={moodData.intensity}
           onChange={(event) =>
@@ -119,7 +119,7 @@ const MoodForm = ({moods, setMoods}) => {
 
         {/* physical emotional experience input */}
         <div className="form-element">
-        <label>Physical experience of mood: </label>
+        <label className="physical-label">Physical experience of mood: </label>
         <textarea
           value={moodData.physical}
           onChange={(event) =>
