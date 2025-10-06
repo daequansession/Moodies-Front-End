@@ -12,3 +12,7 @@
   color: black;
   font-family: "Lexend", sans-serif;
 }
+
+:root {
+  --footer-height: 60px;
+}
