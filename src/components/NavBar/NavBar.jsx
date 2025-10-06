@@ -71,6 +71,9 @@ const NavBar = () => {
         )}
         <ul>
           <li>
+            <Link to="/wheel">Wheel</Link>
+          </li>
+          <li>
             <Link to="/social">Social</Link>
           </li>
           <li onClick={handleClickResources}>Resources</li>

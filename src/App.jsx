@@ -10,6 +10,7 @@ import NavBar from "./components/NavBar/NavBar.jsx";
 import { UserContext } from "./contexts/UserContext.jsx";
 import SignUpForm from "./components/SignUpForm/SignUpForm.jsx";
 import SignInForm from "./components/SignInForm/SignInForm.jsx";
+import Wheel from "./components/Wheel/Wheel.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import "./App.css";
 
@@ -33,6 +34,7 @@ const App = () => {
         <Route path="/social" element={<MoodSocial />} />
         <Route path="/sign-up" element={<SignUpForm />} />
         <Route path="/sign-in" element={<SignInForm />} />
+        <Route path="/wheel" element={<Wheel />} />
         <Route
           path="/moods/new"
           element={<MoodForm setMoods={setMoods} moods={moods} />}
