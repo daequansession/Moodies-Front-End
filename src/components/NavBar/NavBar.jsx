@@ -27,7 +27,6 @@ const NavBar = () => {
       <div className="nav-img-container">
         <img src={logo} alt="logo" />
       </div>
-      {/* <div> */}
       {user ? (
         <ul>
           <li>
@@ -50,6 +49,9 @@ const NavBar = () => {
         </ul>
       )}
       <ul>
+        <li>
+          <Link to="/wheel">Wheel</Link>
+        </li>
         <li>
           <Link to="/social">Social</Link>
         </li>
