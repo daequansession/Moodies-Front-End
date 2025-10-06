@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { Link } from "react-router";
 import { UserContext } from "../../contexts/UserContext";
 import Resources from "../Resources/Resources.jsx";
-import logo from "../../assets/images/tempLogo.png";
+import logo from "../../assets/images/Moodies-Final-Edit.png";
 import "./NavBar.css";
 
 const NavBar = () => {
@@ -24,7 +24,10 @@ const NavBar = () => {
 
   return (
     <nav>
-      <img src={logo} alt="logo" />
+      <div className="nav-img-container">
+        <img src={logo} alt="logo" />
+      </div>
+      {/* <div> */}
       {user ? (
         <ul>
           <li>
