@@ -4,11 +4,18 @@ nav > ul > li {
   border: 3px solid #000000;
   border-radius: 10px;
   margin: 10px;
+  background-color: #f1dede;
+  color: black;
 }
 
-ul {
-  display: flex;
-  color: #000;
+nav a {
+  color: black;
+  list-style-type: none;
+  text-decoration: none;
+}
+
+nav > ul {
+  background-color: #80727b;
 }
 
 nav {
@@ -26,8 +33,8 @@ h4 {
 
 .resource-container {
   position: absolute;
-  top: 14%;
-  background-color: #80727b;
+  top: 6%;
+  background-color: #80727b !important;
 }
 li {
   color: #f1dede;
@@ -43,4 +50,8 @@ a {
   color: #333333;
   padding: 10px 15px;
   border-radius: 5px;
+}
+
+nav img {
+  height: 50px;
 }

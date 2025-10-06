@@ -10,6 +10,7 @@ import NavBar from "./components/NavBar/NavBar.jsx";
 import { UserContext } from "./contexts/UserContext.jsx";
 import SignUpForm from "./components/SignUpForm/SignUpForm.jsx";
 import SignInForm from "./components/SignInForm/SignInForm.jsx";
+import Footer from "./components/Footer/Footer.jsx";
 import "./App.css";
 
 const App = () => {
@@ -44,6 +45,8 @@ const App = () => {
           element={<MoodDetail />}
         />{" "}
       </Routes>
+
+      <Footer />
     </>
   );
 };
