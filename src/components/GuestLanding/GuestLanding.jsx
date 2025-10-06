@@ -1,3 +1,5 @@
+import "./GuestLanding.css"
+
 const GuestLanding = () => {
   return (
     <main>
@@ -8,3 +10,4 @@ const GuestLanding = () => {
 };
 
 export default GuestLanding;
+

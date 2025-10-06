@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { Link } from "react-router";
 import { UserContext } from "../../contexts/UserContext";
 import Resources from "../Resources/Resources.jsx";
-import logo from "../../assets/images/Moodies-Final-Edit.png";
+import logo from "../../assets/images/MoodiesFinalEdit.png";
 import "./NavBar.css";
 
 const NavBar = () => {
