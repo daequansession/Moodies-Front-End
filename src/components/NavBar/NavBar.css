@@ -16,14 +16,16 @@ nav a {
 
 nav > ul {
   background-color: #80727b;
+  width: 20%;
 }
 
 nav {
   display: flex;
   width: 100%;
   background-color: #80727b;
-  align-content: space-around;
   justify-content: flex-end;
+  position: sticky;
+  top: 0;
 }
 
 .nav-img-container {
@@ -37,7 +39,7 @@ h4 {
 
 .resource-container {
   position: absolute;
-  top: 6%;
+  top: 90%;
   background-color: #80727b !important;
 }
 li {
