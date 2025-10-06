@@ -107,7 +107,7 @@ function MoodDetail() {
         )
       ) : moodIsLoaded(editMood) ? (
         <form onSubmit={handleSubmit} className="update-moodform">
-          <h1 className="mood-detail-title">Update {editMood.emotion}</h1>
+          <h1 className="edit-mood-detail-title">Update {editMood.emotion}</h1>
 
           {/* emotion edit */}
           <div className="form-element">
@@ -144,6 +144,7 @@ function MoodDetail() {
               setEditMood({ ...editMood, timeOfEmotion: event.target.value })
             }
             max={formatDate(new Date())}
+            className="time-edit"
           />
           </div> 
 
@@ -184,6 +185,7 @@ function MoodDetail() {
             onChange={(event) =>
               setEditMood({ ...editMood, physical: event.target.value })
             }
+            className="edit-physical"
           />
           </div>
 
@@ -201,6 +203,7 @@ function MoodDetail() {
                 },
               })
             }
+            className="edit-note"
           />
           </div>
 

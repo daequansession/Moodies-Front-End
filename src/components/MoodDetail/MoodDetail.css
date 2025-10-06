@@ -50,3 +50,22 @@ textarea {
   height: 47px;
   background-color: white;
 }
+
+.time-edit {
+  background-color: white;;
+}
+
+.edit-mood-detail-title {
+  padding: 25px;
+  margin-bottom: 20px;
+  margin-top: 50px;
+}
+
+.edit-physical {
+  height: 50px;
+}
+
+.edit-note {
+    width: 434px;
+    height: 50px;
+}
