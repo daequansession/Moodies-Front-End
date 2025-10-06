@@ -40,14 +40,24 @@ function MoodDetail() {
   // handle submit function
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const updated = await moodService.updateMood(editMood);
 
-    if (!updated) {
-      setError("There was an error, try again");
-    } else {
-      setMood(updated);
-      setIsEditing(false);
+      if (!editMood.physical || !editMood.emotion) {
+      alert("Please complete the form before submitting!");
+      return;
     }
+
+  try {
+      const updated = await moodService.updateMood(editMood);
+  
+      if (!updated) {
+        setError("There was an error, try again");
+      } else {
+        setMood(updated);
+        setIsEditing(false);
+      }
+  } catch (error) {
+    
+  }
   };
 
   // handle delete function
