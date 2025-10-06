@@ -52,7 +52,7 @@ const MoodSocial = () => {
 
   return (
     <div className="mood-social-container">
-      <h1>Community Moodies</h1>
+      <h1 className="mood-social-title">Community Moodies</h1>
 
       <div className="sort-controls">
         <label>Sort by: </label>
