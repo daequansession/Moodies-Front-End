@@ -26,6 +26,10 @@ nav {
   justify-content: flex-end;
 }
 
+.nav-img-container {
+  width: 60%;
+}
+
 h4 {
   display: flex;
   align-items: center;
