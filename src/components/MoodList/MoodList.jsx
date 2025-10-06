@@ -52,6 +52,12 @@ const MoodList = () => {
         )}
       </div>
 
+      <div className="moodlist-buttons">
+
+      <Link to="/moods/new" className="add-button">
+        <button>Add Mood</button>
+      </Link>
+
       {pages > 1 && (
         <div className="pagination">
           <button
@@ -71,10 +77,8 @@ const MoodList = () => {
           </button>
         </div>
       )}
-
-      <Link to="/moods/new" className="add-button">
-        <button>Add Mood</button>
-      </Link>
+  </div>
+   
 
       {DELETE_GLOBAL_ENABLED && (
         <button
