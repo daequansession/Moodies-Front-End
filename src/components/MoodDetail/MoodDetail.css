@@ -22,12 +22,50 @@
   padding: 30px;
 }
 
-
 /* edit mood styling */
+
+.update-moodform {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 .form-element {
   display: flex;
   align-items: center;
   margin-bottom: 20px;
 }
-                      
+
+
+label {
+  padding-right: 15px;
+}
+
+select {
+  padding: 3px;
+}
+
+textarea {
+  width: 264px;
+  height: 47px;
+  background-color: white;
+}
+
+.time-edit {
+  background-color: white;;
+}
+
+.edit-mood-detail-title {
+  padding: 25px;
+  margin-bottom: 20px;
+  margin-top: 50px;
+}
+
+.edit-physical {
+  height: 50px;
+}
+
+.edit-note {
+    width: 434px;
+    height: 50px;
+}

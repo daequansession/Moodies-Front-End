@@ -83,124 +83,140 @@ function MoodDetail() {
                 ? formatDate(new Date(mood.timeOfEmotion))
                 : ""}
             </p>
-            <p className="mood-element">
-              Physical Experience: {mood.physical}
-            </p>
-            <p className="mood-element">
-              Intensity of Mood: {mood.intensity}
-            </p>
-            {mood.comments?.note && <h2>Note: {mood.comments.note}</h2>}
-            
-            <button
-              type="button"
-              onClick={() => {
-                setEditMood(mood);
-                setIsEditing(true);
-              }}
-            >
-              Edit Mood
-            </button>
-            <button type="button" onClick={handleDelete}>
-              Remove Mood
-            </button>
+            <p className="mood-element">Physical Experience: {mood.physical}</p>
+            <p className="mood-element">Intensity of Mood: {mood.intensity}</p>
+            {mood.comments?.note && <p>Note: {mood.comments.note}</p>}
+
+            <div className="buttons">
+              <button
+                type="button"
+                onClick={() => {
+                  setEditMood(mood);
+                  setIsEditing(true);
+                }}
+              >
+                Edit Mood
+              </button>
+              <button type="button" onClick={handleDelete}>
+                Remove Mood
+              </button>
+            </div>
           </div>
         ) : (
           <h3>Loading...</h3>
         )
+      ) : moodIsLoaded(editMood) ? (
+        <form onSubmit={handleSubmit} className="update-moodform">
+          <h1 className="edit-mood-detail-title">Update {editMood.emotion}</h1>
+
+          {/* emotion edit */}
+          <div className="form-element">
+            <label>Mood: </label>
+            <select
+              value={editMood.emotion}
+              onChange={(event) =>
+                setEditMood({ ...editMood, emotion: event.target.value })
+              }
+            >
+              <option value=""></option>
+              <option value="Angry">Angry</option>
+              <option value="Anxious">Anxious</option>
+              <option value="Disgusted">Disgusted</option>
+              <option value="Happy">Happy</option>
+              <option value="Sad">Sad</option>
+              <option value="Scared">Scared</option>
+              <option value="Surprised">Surprised</option>
+            </select>
+          </div>
+
+           
+          {/* time of emotion edit */}
+          <div className="form-element">  
+          <label>Day of Mood: </label>
+          <input
+            type="date"
+            value={
+              editMood.timeOfEmotion
+                ? formatDate(new Date(editMood.timeOfEmotion))
+                : ""
+            }
+            onChange={(event) =>
+              setEditMood({ ...editMood, timeOfEmotion: event.target.value })
+            }
+            max={formatDate(new Date())}
+            className="time-edit"
+          />
+          </div> 
+
+
+          {/* intensity edit */}
+          <div className="form-element">
+          <label>
+            On a scale of 1 to 10, select the intensity of the mood:{" "}
+          </label>
+          <select
+            value={editMood.intensity}
+            onChange={(event) =>
+              setEditMood({
+                ...editMood,
+                intensity: parseInt(event.target.value),
+              })
+            }
+          >
+            <option value="">--</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+            </div>
+
+          {/* physical experience edit */}
+          <div className="form-element">
+          <label>Physical experience of mood: </label>
+          <textarea
+            value={editMood.physical}
+            onChange={(event) =>
+              setEditMood({ ...editMood, physical: event.target.value })
+            }
+            className="edit-physical"
+          />
+          </div>
+
+          {/* notes edit */}
+          <div className="form-element">
+          <label>Note: </label>
+          <textarea
+            value={editMood.comments?.note ?? ""}
+            onChange={(event) =>
+              setEditMood({
+                ...editMood,
+                comments: {
+                  ...editMood.comments,
+                  note: event.target.value,
+                },
+              })
+            }
+            className="edit-note"
+          />
+          </div>
+
+          <div className="buttons">
+            <button type="submit">Update Mood</button>
+            <button type="button" onClick={() => setIsEditing(false)}>
+              Cancel Update
+            </button>
+          </div>
+        </form>
       ) : (
-          moodIsLoaded(editMood) ? (
-            <form onSubmit={handleSubmit}>
-              {/* emotion edit */}
-              <label>Mood: </label>
-              <select
-                value={editMood.emotion}
-                onChange={(event) =>
-                  setEditMood({ ...editMood, emotion: event.target.value })
-                }
-              >
-                <option value=""></option>
-                <option value="Angry">Angry</option>
-                <option value="Anxious">Anxious</option>
-                <option value="Disgusted">Disgusted</option>
-                <option value="Happy">Happy</option>
-                <option value="Sad">Sad</option>
-                <option value="Scared">Scared</option>
-                <option value="Surprised">Surprised</option>
-              </select>
-
-              {/* physical experience edit */}
-              <label>Physical experience of mood: </label>
-              <textarea
-                value={editMood.physical}
-                onChange={(event) =>
-                  setEditMood({ ...editMood, physical: event.target.value })
-                }
-              />
-
-              {/* intensity edit */}
-              <label>
-                On a scale of 1 to 10, select the intensity of the mood:{" "}
-              </label>
-              <select
-                value={editMood.intensity}
-                onChange={(event) =>
-                  setEditMood({
-                    ...editMood,
-                    intensity: parseInt(event.target.value),
-                  })
-                }
-              >
-                <option value="">--</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-              </select>
-
-              {/* time of emotion edit */}
-              <label>Day of Mood: </label>
-              <input
-                type="date"
-                value={
-                  editMood.timeOfEmotion ? formatDate(new Date(editMood.timeOfEmotion)) : ""
-                }
-                onChange={(event) =>
-                  setEditMood({ ...editMood, timeOfEmotion: event.target.value})
-                }
-                max={formatDate(new Date())}
-              />
-
-              {/* notes edit */}
-              <label>Note: </label>
-              <textarea
-                value={editMood.comments?.note ?? ""}
-                onChange={(event) =>
-                  setEditMood({
-                    ...editMood,
-                    comments: {
-                      ...editMood.comments,
-                      note: event.target.value,
-                    },
-                  })
-                }
-              />
-              <button type="submit">
-                Update Mood
-              </button>
-              <button type="button" onClick={() => setIsEditing(false)}>
-                Cancel Edit
-              </button>
-            </form>
-          ) : (
-            <h3>Loading...</h3>
-          )
-        )}
+        <h3>Loading...</h3>
+      )}
     </>
   );
 }
