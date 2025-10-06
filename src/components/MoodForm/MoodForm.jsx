@@ -24,22 +24,31 @@ const MoodForm = ({moods, setMoods}) => {
   // handleSubmit function
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const moodRequest = await newMood(moodData);
 
-    console.log("Moods", moods);
-    console.log("moodRequest", moodRequest);
-    if (moods)
-      setMoods([...moods, moodRequest]);
-    else
-      setMoods([moodRequest]);
-      setMoodData({
-        emotion: "",
-        physical: "",
-        intensity: 5,
-        timeOfEmotion: formatDate(new Date()),
-        comments: { note: "" },
-      });
-      navigate("/");
+    if (!moodData.physical) {
+      alert("Please describe your physical experience before submitting!");
+      return;
+    }
+
+    try {
+      const moodRequest = await newMood(moodData);
+  
+  
+      if (moods)
+        setMoods([...moods, moodRequest]);
+      else
+        setMoods([moodRequest]);
+        setMoodData({
+          emotion: "",
+          physical: "",
+          intensity: 5,
+          timeOfEmotion: formatDate(new Date()),
+          comments: { note: "" },
+        });
+        navigate("/");
+    } catch (error) {
+      
+    }
   };
 
   return (
@@ -78,6 +87,7 @@ const MoodForm = ({moods, setMoods}) => {
             setMoodData({...moodData, timeOfEmotion: event.target.value})}
           }
           max={formatDate(new Date())}
+          className="time-input"
         />
         </div>
 
