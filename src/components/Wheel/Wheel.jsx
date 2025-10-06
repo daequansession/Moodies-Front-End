@@ -192,7 +192,7 @@ const Wheel = () => {
     const scale = Math.min(rect.width, rect.height) / 500;
     dist = dist / scale;
 
-    const pixelsPerRadius = 46;
+    const pixelsPerRadius = 60;
     const innerIRadius = pixelsPerRadius * 1;
     const innerORadius = pixelsPerRadius * 2;
     const middleORadius = pixelsPerRadius * 3;
