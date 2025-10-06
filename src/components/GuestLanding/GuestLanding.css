@@ -59,7 +59,7 @@ main {
   background-color: whitesmoke;
 }
 
-h1 {
+.landing-page-title {
   font-size: 5rem;
   font-weight: 700;
   animation: textColorShift 6s ease-in-out infinite;
