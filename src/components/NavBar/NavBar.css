@@ -1,4 +1,7 @@
-nav > ul > li {
+/* === Original Navbar styling (unchanged) === */
+nav > ul > li,
+.nav-links > ul > li {
+  /* ADDED second selector */
   list-style-type: none;
   padding: 8px;
   border: 3px solid #000000;
@@ -8,15 +11,19 @@ nav > ul > li {
   color: black;
 }
 
-nav a {
+nav a,
+.nav-links a {
+  /* ADDED second selector */
   color: black;
   list-style-type: none;
   text-decoration: none;
 }
 
-nav > ul {
+nav > ul,
+.nav-links > ul {
+  /* ADDED second selector */
   background-color: #80727b;
-  width: 20%;
+  width: 50%;
 }
 
 nav {
@@ -42,6 +49,7 @@ h4 {
   top: 90%;
   background-color: #80727b !important;
 }
+
 li {
   color: #f1dede;
 }
@@ -60,4 +68,79 @@ a {
 
 nav img {
   height: 50px;
+}
+
+/* === New Styling for hamburger menu === */
+
+/* Layout container for all lists (desktop: row) */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 40%;
+}
+
+/* Hamburger (hidden on desktop) */
+.nav-hamburger {
+  display: none;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  padding: 6px;
+  margin-right: 8px;
+}
+
+/* ===========================
+   Responsive: hamburger panel
+   =========================== */
+@media (max-width: 768px) {
+  .nav-hamburger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Slide-down panel */
+  .nav-links {
+    position: absolute;
+    top: 75px; /* adjust if your nav height differs */
+    right: 0;
+    right: 0;
+    display: none; /* closed by default */
+    flex-direction: column;
+    padding: 0.5rem 0.75rem;
+    background-color: #80727b;
+    border-top: 1px solid #00000033;
+    z-index: 1000;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  /* Each list stacks and fills width on mobile */
+  .nav-links > ul {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.25rem;
+    background-color: #80727b;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-links > ul > li {
+    margin: 6px 8px;
+  }
+
+  /* Prevent the original nav > ul width rule from squeezing mobile */
+  nav > ul {
+    width: auto;
+  }
+
+  .nav-img-container {
+    width: 90%;
+    display: flex;
+    align-items: center;
+  }
 }

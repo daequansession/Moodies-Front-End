@@ -1,0 +1,37 @@
+.wheel-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 100px); /* leave space for navbar */
+  margin-top: 20px; /* adjust based on navbar height */
+  user-select: none;
+  cursor: grab;
+  overflow: hidden;
+}
+
+/* ✅ Responsive wheel sizing */
+.wheel-image {
+  width: min(80vw, 80vh); /* responsive sizing */
+  max-width: 700px;
+  height: auto;
+  object-fit: contain;
+  transition: transform 0s;
+  pointer-events: auto;
+}
+
+.tooltip {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.95);
+  border: 2px solid #333;
+  border-radius: 8px;
+  padding: 10px 15px;
+  text-align: center;
+  min-width: 150px;
+  pointer-events: none;
+  z-index: 10;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
