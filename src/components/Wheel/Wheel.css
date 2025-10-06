@@ -18,6 +18,7 @@
   object-fit: contain;
   transition: transform 0s;
   pointer-events: auto;
+  transform-origin: 50% 50%;
 }
 
 .tooltip {
@@ -34,4 +35,8 @@
   pointer-events: none;
   z-index: 10;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+img {
+  transform-origin: center center;
 }
