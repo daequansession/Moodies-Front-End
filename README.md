@@ -17,6 +17,14 @@ The backend serves as the API layer for the frontend.
 - Browse a feed of all logged moods  
 - Clean, minimal UI focused on reflection and mental health awareness  
 
+## Component Hierarchy
+
+![component hierarchy](src/assets/images/Components.png)
+
+## Routes Table
+
+![routes table](src/assets/images/RouteTable.png)
+
 
 ## 🟢 Getting Started
 
@@ -82,10 +90,6 @@ Backend:
 - AAU, it would be cool to visualize my moods over time in a graph or chart
 - AAU, I'd like to be able to reset my password or delete my account
 
-
-## 📝 License
-
-This project is for educational purposes as part of a MERN stack group project.
 
 ## 🤝 Contributors
 
