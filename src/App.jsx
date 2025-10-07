@@ -11,6 +11,7 @@ import { UserContext } from "./contexts/UserContext.jsx";
 import SignUpForm from "./components/SignUpForm/SignUpForm.jsx";
 import SignInForm from "./components/SignInForm/SignInForm.jsx";
 import Wheel from "./components/Wheel/Wheel.jsx";
+import UserSettings from "./components/UserSettings/UserSettings.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import "./App.css";
 
@@ -40,6 +41,7 @@ const App = () => {
           element={<MoodForm setMoods={setMoods} moods={moods} />}
         />
         <Route path="/moods/:moodId" element={<MoodDetail />} />{" "}
+        <Route path="/settings" element={<UserSettings user={user} />} />
       </Routes>
 
       <Footer />

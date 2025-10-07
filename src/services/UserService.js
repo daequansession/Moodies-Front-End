@@ -1,18 +1,21 @@
+import api from "./apiConfig.js";
 const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/users`;
 
-const index = async () => {
-  try {
-    const res = await fetch(BASE_URL, {
-      headers: {
-        Authorization: localStorage.getItem("token"),
-      },
-    });
-    const data = await res.json();
+const userService = {
+  getUser: async (id) => {
+    const res = await api.get(`/users/${id}`);
+    return res.data;
+  },
 
-    return data;
-  } catch (error) {
-    console.error(error);
-  }
+  updateUser: async (id, data) => {
+    const res = await api.put(`/users/${id}`, data);
+    return res.data;
+  },
+
+  deleteUser: async (id) => {
+    const res = await api.delete(`/users/${id}`);
+    return res.data;
+  },
 };
 
-export { index };
+export default userService;

@@ -58,6 +58,11 @@ const NavBar = () => {
                 Sign Out
               </Link>
             </li>
+            <li>
+              <Link to="/settings">
+                 Settings
+              </Link>
+            </li>
           </ul>
         ) : (
           <ul>
