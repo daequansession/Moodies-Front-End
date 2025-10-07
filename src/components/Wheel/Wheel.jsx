@@ -80,7 +80,7 @@ const outerCircle = [
     { name: "Overjoyed", start: 2.19, end: 6.58, description: "Feeling extremely delighted or happy." },
     { name: "Aggravated", start: 6.58, end: 10.97, description: "Feeling annoyed or made worse by irritation." },
     { name: "Irked", start: 10.97, end: 15.36, description: "Feeling slightly annoyed or irritated." },
-    { name: "Annoyed - Furious", start: 15.36, end: 19.75, description: "Feeling increasingly irritated or angry." },
+    { name: "Furious", start: 15.36, end: 19.75, description: "Feeling increasingly irritated or angry." },
     { name: "Bothered", start: 19.75, end: 24.14, description: "Feeling uneasy or disturbed by something." },
     { name: "Bitter", start: 24.14, end: 28.53, description: "Feeling resentful or holding onto past anger." },
     { name: "Jealous", start: 28.53, end: 32.92, description: "Feeling envious or possessive over something." },
@@ -91,7 +91,7 @@ const outerCircle = [
     { name: "Hostile", start: 50.48, end: 54.87, description: "Feeling antagonistic or opposed to something." },
     { name: "Provoked", start: 54.87, end: 59.26, description: "Feeling angered or triggered by someone's actions." },
     { name: "Infuriated", start: 59.26, end: 63.65, description: "Feeling furious or beyond irritated." },
-    { name: "Mad - Furious", start: 63.65, end: 68.04, description: "Feeling explosively angry or enraged." },
+    { name: "Fuming", start: 63.65, end: 68.04, description: "Feeling so angry that it's hard to contain; seething with intense frustration or rage." },
     { name: "Humiliated", start: 68.04, end: 72.43, description: "Feeling ashamed or degraded in front of others." },
     { name: "Ridiculed", start: 72.43, end: 76.82, description: "Feeling mocked or made fun of." },
     { name: "Resentful", start: 76.82, end: 81.21, description: "Feeling bitter about unfair treatment." },
@@ -188,7 +188,7 @@ const Wheel = () => {
         const img = imgRef.current;
         if (!img) return;
 
-        // Center from the *visual* rect (this stays the center even when rotated)
+        // Center from the visual rect (this stays the center even when rotated)
         const rect = img.getBoundingClientRect();
         const cx = rect.left + rect.width / 2;
         const cy = rect.top + rect.height / 2;
@@ -214,13 +214,13 @@ const Wheel = () => {
         const middleORadius = layoutRadius * multiRing * 3;
         const outerORadius  = layoutRadius * multiRing * 4;
 
-        // Outside the wheel or inside the hole ➜ nothing hovered
+        // Outside the wheel or inside the hole -> nothing hovered
         if (dist < innerIRadius || dist >= outerORadius) {
             setHovered(null);
             return;
         }
 
-        // Angle in the upright wheel’s coordinates (0° = right, CCW positive)
+        // Angle in the upright wheel's coordinates (0 degrees means it's pointing right, CCW positive)
         let deg = (Math.atan2(uy, ux) * 180) / Math.PI;
         if (deg < 0) deg += 360;
 
