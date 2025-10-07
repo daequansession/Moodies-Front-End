@@ -37,6 +37,8 @@ nav {
 
 .nav-img-container {
   width: 60%;
+  padding-top: 5px;
+  padding-left: 15px;
 }
 
 h4 {
@@ -69,10 +71,10 @@ a {
 nav img {
   height: 50px;
 }
-
+/* 
 nav li {
   padding-right: 75px;
-}
+} */
 
 /* === New Styling for hamburger menu === */
 
@@ -81,7 +83,7 @@ nav li {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  width: 40%;
+  width: 75%;
 }
 
 /* Hamburger (hidden on desktop) */
