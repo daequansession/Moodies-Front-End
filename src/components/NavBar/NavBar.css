@@ -70,6 +70,10 @@ nav img {
   height: 50px;
 }
 
+nav li {
+  padding-right: 75px;
+}
+
 /* === New Styling for hamburger menu === */
 
 /* Layout container for all lists (desktop: row) */

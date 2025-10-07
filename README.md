@@ -1,7 +1,7 @@
 # Moodies
 
 
-<!-- landing page image -->
+![guest landing page](src/assets/images/GuestLandingPage.png)
 
 This is the front-end for Moodies, a full-stack MERN application that allows users to track their moods over time. Users may track their moods, the date of the mood, the intensity of the mood, the physical experience of the mood, and any additional notes the user may want to log. 
 
