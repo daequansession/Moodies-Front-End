@@ -188,7 +188,7 @@ const Wheel = () => {
         const img = imgRef.current;
         if (!img) return;
 
-        // Center from the *visual* rect (this stays the center even when rotated)
+        // Center from the visual rect (this stays the center even when rotated)
         const rect = img.getBoundingClientRect();
         const cx = rect.left + rect.width / 2;
         const cy = rect.top + rect.height / 2;
@@ -214,13 +214,13 @@ const Wheel = () => {
         const middleORadius = layoutRadius * multiRing * 3;
         const outerORadius  = layoutRadius * multiRing * 4;
 
-        // Outside the wheel or inside the hole ➜ nothing hovered
+        // Outside the wheel or inside the hole -> nothing hovered
         if (dist < innerIRadius || dist >= outerORadius) {
             setHovered(null);
             return;
         }
 
-        // Angle in the upright wheel’s coordinates (0° = right, CCW positive)
+        // Angle in the upright wheel's coordinates (0 degrees means it's pointing right, CCW positive)
         let deg = (Math.atan2(uy, ux) * 180) / Math.PI;
         if (deg < 0) deg += 360;
 
