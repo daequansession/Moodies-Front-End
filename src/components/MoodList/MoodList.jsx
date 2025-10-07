@@ -10,7 +10,7 @@ const formatDate = (date) => date.toISOString().split("T")[0];
 const MoodList = () => {
   const [moods, setMoods] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [sortBy, setSortBy] = useState("Posted (Newest)"); // ✅ Default sort option
+  const [sortBy, setSortBy] = useState("Posted (Newest)"); // Default sort option
   const moodsPerPage = 5;
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const MoodList = () => {
     fetchMoods();
   }, []);
 
-  // ✅ Sorting logic for all options
+  // Sorting logic for all options
   const sortedMoods = Array.isArray(moods)
     ? [...moods].sort((a, b) => {
         switch (sortBy) {
@@ -75,7 +75,7 @@ const MoodList = () => {
     </div>
   );
 
-  // ⬇️ Keep your entire return exactly as it was
+  // Keep your entire return exactly as it was
   return (
     <div>
       <h1 className="moodlist-title">My Moodies</h1>
@@ -148,7 +148,7 @@ const MoodList = () => {
           onClick={async () => {
             if (window.confirm("Are you sure you want to delete ALL moods?")) {
               await moodService.deleteAbsoluteAllMoods();
-              setMoods([]); // clear local state too
+              setMoods([]); 
             }
           }}
         >
