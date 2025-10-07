@@ -201,8 +201,8 @@ const Wheel = () => {
         const ux = dx * Math.cos(rad) - dy * Math.sin(rad);
         const uy = dx * Math.sin(rad) + dy * Math.cos(rad);
 
-        // Distance in screen pixels from the center, but we’ll compare it to
-        // radii derived from the layout size, which does NOT change with rotation.
+        // Distance in screen pixels from the center, compare it to
+        // radii from the layout size, which does NOT change with rotation.
         const dist = Math.hypot(ux, uy);
 
         // Use layout size (unaffected by transform) so radii do not drift
